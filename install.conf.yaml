@@ -39,6 +39,9 @@
     stdin: true
   # raptor
   - [brew install raptor, Installing raptor]
+  # keybase / gnupg
+  - [brew install keybase, Installing keybase]
+  - [brew install gpg-agent, Installing gpg-agent]
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
