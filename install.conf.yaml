@@ -1,5 +1,31 @@
 - clean: ['~']
 
+- link:
+    # zsh
+    ~/.zshrc: zsh/zshrc
+    # ack
+    ~/.ackrc: ack/ackrc
+    # slate
+    ~/.slate.js: slate/slate.js
+    # sublime
+    ~/.bin/subl: "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+    "~/Library/Application Support/Sublime Text 3/Packages/User": sublime/User
+    # git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
+    ~/.bin/git-email-prompt: git/git-email-prompt.sh
+    # ssh
+    ~/.ssh: ssh
+    # powerline shell
+    ~/.config/powerline: powerline/config_files
+    # rdf.sh
+    ~/.config/rdf.sh: rdf.sh
+    # docker
+    ~/.bin/docker-i: docker/docker-i
+    ~/.bin/docker-loglast: docker/docker-loglast
+    ~/.bin/docker-psa: docker/docker-psa
+    ~/.bin/docker-rmf: docker/docker-rmf
+
 - shell:
   # homebrew
   - description: "Installing Homebrew"
@@ -42,30 +68,12 @@
   # keybase / gnupg
   - [brew install keybase, Installing keybase]
   - [brew install gpg-agent, Installing gpg-agent]
+  - description: "Login to keybase"
+    command: "keybase login"
+    stdin: true
+  - description: "Decrypt secrets"
+    command: "sh ssh/decrypt_secrets.sh"
+    stdin: true
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
-
-- link:
-    # zsh
-    ~/.zshrc: zsh/zshrc
-    # ack
-    ~/.ackrc: ack/ackrc
-    # slate
-    ~/.slate.js: slate/slate.js
-    # sublime
-    ~/.bin/subl: "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
-    "~/Library/Application Support/Sublime Text 3/Packages/User": sublime/User
-    # git
-    ~/.gitconfig: git/gitconfig
-    ~/.gitignore_global: git/gitignore_global
-    ~/.bin/git-email-prompt: git/git-email-prompt.sh
-    # powerline shell
-    ~/.config/powerline: powerline/config_files
-    # rdf.sh
-    ~/.config/rdf.sh: rdf.sh
-    # docker
-    ~/.bin/docker-i: docker/docker-i
-    ~/.bin/docker-loglast: docker/docker-loglast
-    ~/.bin/docker-psa: docker/docker-psa
-    ~/.bin/docker-rmf: docker/docker-rmf
