@@ -25,6 +25,7 @@
     ~/.bin/docker-loglast: docker/docker-loglast
     ~/.bin/docker-psa: docker/docker-psa
     ~/.bin/docker-rmf: docker/docker-rmf
+    ~/.bin/docker-searcheccenca: docker/docker-searcheccenca
 
 - shell:
   # homebrew
@@ -65,6 +66,8 @@
     stdin: true
   # raptor
   - [brew install raptor, Installing raptor]
+  # jq
+  - [brew install jq, Installing jq]
   # keybase / gnupg
   - [brew install keybase, Installing keybase]
   - [brew install gpg-agent, Installing gpg-agent]
