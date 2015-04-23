@@ -1,3 +1,7 @@
+# unixorn/autoupdate-zgen - auto update every 30 days
+export ZGEN_PLUGIN_UPDATE_DAYS=30
+export ZGEN_SYSTEM_UPDATE_DAYS=30
+
 # load zgen
 source "${HOME}/.dotfiles/submodules/zgen/zgen.zsh"
 
@@ -32,7 +36,7 @@ if ! zgen saved; then
     # they break, so get the order right.
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-history-substring-search
-    zgen load unixorn/autoupdate-zgen # zgen automatic updates
+    #zgen load unixorn/autoupdate-zgen # zgen automatic updates
     zgen load Tarrasch/zsh-bd # quickly go back to a specific parent directory using 'bd'
     zgen load zsh-users/zsh-completions src
     zgen load chriskempson/base16-shell base16-eighties.dark.sh # needed for powerline

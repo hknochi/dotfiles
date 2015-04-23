@@ -9,7 +9,3 @@ export DOCKER_TLS_VERIFY=1
 
 # Java home
 export JAVA_HOME="$(/usr/libexec/java_home)"
-
-# unixorn/autoupdate-zgen - auto update every 14 days
-export ZGEN_PLUGIN_UPDATE_DAYS=14
-export ZGEN_SYSTEM_UPDATE_DAYS=14
