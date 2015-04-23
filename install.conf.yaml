@@ -15,11 +15,19 @@
     ~/.gitignore_global: git/gitignore_global
     ~/.bin/git-email-prompt: git/git-email-prompt.sh
     # ssh
-    ~/.ssh: ssh
+    ~/.ssh: $HOME/.config/ssh
     # powerline shell
     ~/.config/powerline: powerline/config_files
     # rdf.sh
     ~/.config/rdf.sh: rdf.sh
+    # docker config certs
+    ~/.config/ssl/docker-eccenca/ca.pem: ~/.config/ssl/docker-eccenca/ca.cer
+    ~/.config/ssl/docker-eccenca/key.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.key
+    ~/.config/ssl/docker-eccenca/cert.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.cer
+    ~/.config/ssl/docker-eccenca/client-key.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.key
+    ~/.config/ssl/docker-eccenca/client-cert.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.cer
+    # ansible
+    ~/.config/ansible_hosts: $HOME/.ansible_hosts
     # docker
     ~/.bin/docker-i: docker/docker-i
     ~/.bin/docker-loglast: docker/docker-loglast
@@ -37,6 +45,7 @@
   - [brew install wget, Installing wget]
   - [brew install curl, Installing curl]
   - [brew install python, Installing python]
+  - [brew install parallel, Installing parallel]
   # zsh
   - [brew install zsh, Installing zsh]
   - description: "Changing default shell to zsh"
@@ -71,12 +80,17 @@
   # keybase / gnupg
   - [brew install keybase, Installing keybase]
   - [brew install gpg-agent, Installing gpg-agent]
-  - description: "Login to keybase"
-    command: "keybase login"
-    stdin: true
-  - description: "Decrypt secrets"
-    command: "sh ssh/decrypt_secrets.sh"
-    stdin: true
+  #- description: "Login to keybase"
+  #  command: "keybase login"
+  #  stdin: true
+  #- description: "Decrypt secrets"
+  #  command: "sh ssh/decrypt_secrets.sh"
+  #  stdin: true
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
+  # set home to iterm2
+  - [defaults write com.googlecode.iterm2 Working\ Directory -string $HOME]
+  - [defaults write com.googlecode.iterm2 PrefsCustomFolder -string $HOME/.dotfiles/iterm2]
+  
+

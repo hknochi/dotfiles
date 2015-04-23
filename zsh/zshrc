@@ -13,6 +13,7 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # plugins
+    zgen oh-my-zsh plugins/apache2-macports
     zgen oh-my-zsh plugins/brew
     zgen oh-my-zsh plugins/bgnotify
     zgen oh-my-zsh plugins/colored-man
@@ -56,3 +57,13 @@ if [ -d $HOME/.dotfiles/zsh ]; then
     source $file
   done
 fi
+
+#customization
+
+MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de
+henri.knochenhauer@eccenca.com  knochenhauer@informatik.uni-leipzig.de"
+USER="Henri Knochenhauer"
+
+# add your name to your .gitconfig
+git config --global user.name "$USER"
+

@@ -38,10 +38,10 @@
   pager      = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "subl -w"
-  excludesfile = /Users/Marvin/.gitignore_global
+  excludesfile = $HOME/.gitignore_global
 
 [user]
-  name = Marvin Frommhold
+  name = YOUR NAME
 
 # git flow default configuration
 [gitflow "branch"]
