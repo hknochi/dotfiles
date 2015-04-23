@@ -2,7 +2,7 @@
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Base16 Color Schemes/base16-eighties.dark.tmTheme",
 	"create_window_at_startup": true,
-	"dictionary": "Packages/Language - English/en_US.dic",
+	"dictionary": "Packages/User/German_de_DE.dic",
 	"draw_white_space": "all",
 	"file_exclude_patterns":
 	[
@@ -18,8 +18,8 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Vintage",
 		"Markdown",
+		"Vintage",
 		"Vintageous"
 	],
 	"indent_guide_options":
