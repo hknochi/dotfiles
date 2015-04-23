@@ -2350,7 +2350,7 @@
 			<key>Window Type</key>
 			<integer>1</integer>
 			<key>Working Directory</key>
-			<string>/Users/marvin</string>
+			<string>/Users/hknochenhauer</string>
 		</dict>
 		<dict>
 			<key>ASCII Anti Aliased</key>
@@ -3134,7 +3134,7 @@
 			<key>Window Type</key>
 			<integer>2</integer>
 			<key>Working Directory</key>
-			<string>/Users/marvin</string>
+			<string>/Users/hknochenhauer</string>
 		</dict>
 	</array>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
@@ -3185,7 +3185,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/Marvin/.dotfiles/iterm2</string>
+	<string>/Users/hknochenhauer/.dotfiles/iterm2</string>
 	<key>PromptOnClose</key>
 	<false/>
 	<key>PromptOnQuit</key>
