@@ -53,6 +53,9 @@
     stdin: true
   # powerline shell
   - [pip install powerline-status, Installing powerline shell]
+  - description: "Installing powerline fonts"
+    command: "curl -sSL https://raw.githubusercontent.com/powerline/fonts/master/install.sh | sh"
+    stdin: true
   # terminal notifications
   - [brew install terminal-notifier, Installing terminal-notifier]
   # fasd
