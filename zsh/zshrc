@@ -60,10 +60,9 @@ fi
 
 #customization
 
-MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de
-henri.knochenhauer@eccenca.com  knochenhauer@informatik.uni-leipzig.de"
-USER="Henri Knochenhauer"
+export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com  knochenhauer@informatik.uni-leipzig.de"
+export USER="Henri Knochenhauer"
 
 # add your name to your .gitconfig
-git config --global user.name "$USER"
+git config --global user.name "${USER}"
 
