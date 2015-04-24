@@ -95,5 +95,7 @@
   # set home to iterm2
   - [defaults write com.googlecode.iterm2 Working\ Directory -string $HOME]
   - [defaults write com.googlecode.iterm2 PrefsCustomFolder -string $HOME/.dotfiles/iterm2]
-  
+  # change https access to ssh access for dotfile repo
+  - description: "change https access to ssh access for dotfile repo"
+    command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
 
