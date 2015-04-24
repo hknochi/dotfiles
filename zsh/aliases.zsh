@@ -31,6 +31,11 @@ alias sudo='sudo '
 # zsh
 alias zshconfig="subl ~/.zshrc"
 
+# os x 
+alias hiddenfiles="defaults write com.apple.finder AppleShowAllFiles NO"
+alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles YES"
+
+#####Privat
 # docker private
 alias d-s1="$PRVT_DOCKER -H=docker-server1.hknochi.de:2376 "
 alias d-htwk="$PRVT_DOCKER -H=docker-htwk.hknochi.de:2375 "

@@ -60,7 +60,7 @@ fi
 
 #customization
 
-export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com  knochenhauer@informatik.uni-leipzig.de"
+export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com knochenhauer@informatik.uni-leipzig.de"
 export USER="Henri Knochenhauer"
 
 # add your name to your .gitconfig

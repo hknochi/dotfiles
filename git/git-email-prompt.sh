@@ -4,7 +4,7 @@
 # to configure for current git repository
 
 # set your available emails
-MAILS=${MAIL_ADDRESSES}
+MAILS=(${MAIL_ADDRESSES})
 
 # prompt for email
 echo

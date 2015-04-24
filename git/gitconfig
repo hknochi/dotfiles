@@ -41,7 +41,7 @@
   excludesfile = $HOME/.gitignore_global
 
 [user]
-  name = YOUR NAME
+	name = Henri Knochenhauer
 
 # git flow default configuration
 [gitflow "branch"]
