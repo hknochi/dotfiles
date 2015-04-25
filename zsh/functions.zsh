@@ -250,3 +250,8 @@ runUbuntu(){
          docker run --rm -it ubuntu:14.04 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker /bin/bash
     fi
 }
+
+#TODO
+# generate server cert (with serial)
+# generate client cert (with serial)
+# sign client cert
