@@ -18,8 +18,8 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"Vintage",
+		"Markdown",
 		"Vintageous"
 	],
 	"indent_guide_options":

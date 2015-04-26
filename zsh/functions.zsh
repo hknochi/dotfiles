@@ -140,6 +140,7 @@ case "$(uname -s)" in
    Darwin)
      echo 'Mac OS X'
      brew update && brew upgrade
+     brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
      ;;
 
    Linux)
