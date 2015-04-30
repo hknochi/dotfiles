@@ -13,7 +13,7 @@
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
-    ~/.bin/git-email-prompt: git/git-email-prompt.sh
+    ~/.bin/git-email: git/git-email.sh
     # ssh
     ~/.ssh: ssh
     # powerline shell

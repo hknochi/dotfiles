@@ -80,7 +80,7 @@ function git() {
           return 0
         fi
       fi
-      git-email-prompt
+      git-email
     fi
   else
     # return the exit code of the failed git command call
