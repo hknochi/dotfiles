@@ -44,6 +44,8 @@ alias d-htwk="$PRVT_DOCKER -H=docker-htwk.hknochi.de:2375 "
 
 alias ecc-d-i="ecc-docker-includes "
 
+alias private="$HOME/Documents/encfslogin.sh"
+
 ####ECCENCA
 # Docker Config
 export ECC_DOCKER="--tlsverify --tlscacert=$HOME/.config/ssl/docker-eccenca/ca.pem --tlscert=$HOME/.config/ssl/docker-eccenca/client-cert.pem --tlskey=$HOME/.config/ssl/docker-eccenca/client-key.pem "

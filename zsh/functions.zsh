@@ -48,7 +48,7 @@ function rdf() {
 }
 
 # edit markdown files with Sublime Text and view them with Marked 2
-function md() {
+function markdown() {
 
   open -a Marked\ 2 $*
   subl && open -a Sublime\ Text $*

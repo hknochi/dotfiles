@@ -42,6 +42,7 @@
 
 [user]
 	name = Henri Knochenhauer
+	email = hknochi@gmail.com
 
 # git flow default configuration
 [gitflow "branch"]
