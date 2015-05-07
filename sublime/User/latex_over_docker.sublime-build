@@ -1,0 +1,5 @@
+{
+    "cmd": ["docker", "run", "-i", "--rm", "-v", "$folder:/build", "docker-registry.eccenca.com/eccenca-latex:latest", "/bin/bash", "-c", "\"/build/build2.sh\"", "open", "$folder/main.pdf"],
+    "selector": "source.tex",
+    "working_dir": "${project_path:${folder}}"
+}

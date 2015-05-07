@@ -11,16 +11,16 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 12.0,
+	"font_size": 15.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Markdown",
+		"Vintageous",
 		"Vintage",
-		"Vintageous"
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
