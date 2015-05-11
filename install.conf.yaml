@@ -14,6 +14,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.bin/git-mail: git/git-mail.sh
+    ~/.bin/git-status: git/git-status.sh
     # ssh
     ~/.ssh: ssh
     # powerline shell
