@@ -14,7 +14,6 @@ if ! zgen saved; then
 
     # plugins
     zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/bgnotify
     zgen oh-my-zsh plugins/colored-man
     zgen oh-my-zsh plugins/command-not-found
     zgen oh-my-zsh plugins/docker
@@ -43,6 +42,7 @@ if ! zgen saved; then
     zgen load RobSis/zsh-completion-generator # completion for commands with getopts style help
     zgen load xr09/rainbow.sh rainbow.sh # simple colors for shell scripts
     #zgen load depressiveRobot/stash-aware # show message if stashes for current branch
+    zgen load t413/zsh-background-notify # background notifications for long running commands
 
     # theme
     zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train.zsh-theme
