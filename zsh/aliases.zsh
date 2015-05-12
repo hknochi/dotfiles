@@ -22,6 +22,7 @@ alias rdf='rdf'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diskusage='ncdu'
 alias rf='rm -rf'
+alias tree='tree -N' # support unicode characters
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
