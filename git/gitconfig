@@ -5,6 +5,7 @@
   b = branch
   c = commit
   cm = commit -m
+  cms = commit -S -m 
   co = checkout
   cob = checkout -b
   ci = commit
@@ -12,7 +13,9 @@
   d = diff
   dc = svn dcommit
   desc = describe
+  diff = diff HEAD 
   f = fetch --prune --all
+  log = log --show-signature
   m = merge
   mf = merge --no-ff
   p = push
@@ -43,6 +46,7 @@
 [user]
 	name = Henri Knochenhauer
 	email = hknochi@gmail.com
+	signingkey = AB0C6D39
 
 # git flow default configuration
 [gitflow "branch"]
