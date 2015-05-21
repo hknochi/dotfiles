@@ -2,6 +2,13 @@
 export PATH=$HOME/.bin:$PATH # add user binaries to path
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$HOME/.dotfiles/eccenca/bin:$PATH
+# Load all files from .dotfiles/zsh/ directory
+if [ -d $HOME/.dotfiles/eccenca ]; then
+  for file in $HOME/.dotfiles/eccenca/*.zsh; do
+    source $file
+  done
+fi
+
 
 
 # export docker host address

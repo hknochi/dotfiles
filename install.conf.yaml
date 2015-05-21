@@ -84,9 +84,9 @@
   # keybase / gnupg
   - [brew install keybase, Installing keybase]
   - [brew install gpg-agent, Installing gpg-agent]
-  #- description: "Login to keybase"
-  #  command: "keybase login"
-  #  stdin: true
+  - description: "Login to keybase"
+    command: "keybase login"
+    stdin: true
   #- description: "Decrypt secrets"
   #  command: "sh ssh/decrypt_secrets.sh"
   #  stdin: true
@@ -99,7 +99,7 @@
   # change https access to ssh access for dotfile repo
   - description: "change https access to ssh access for dotfile repo"
     command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
-  - [npm install -g ungit , Install Ungit UI]
+  #- [npm install -g ungit , Install Ungit UI]
   # use cask to install some stuff
   - [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
   # install eccenca stuff

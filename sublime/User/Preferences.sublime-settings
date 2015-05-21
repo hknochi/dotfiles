@@ -19,8 +19,8 @@
 	"ignored_packages":
 	[
 		"Vintageous",
-		"Vintage",
-		"Markdown"
+		"Markdown",
+		"Vintage"
 	],
 	"indent_guide_options":
 	[

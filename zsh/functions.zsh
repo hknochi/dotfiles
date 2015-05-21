@@ -223,35 +223,6 @@ function getcertnames() {
 	fi;
 }
 
-####ECCENCA
-
-ansibleWrapper(){
-  ansible webservers -a "$1" --sudo -K  -i ~/.config/ansible_hosts
-}
-
-ecc-docker-includes(){
-  git submodule add ssh://git@gitlab.eccenca.com:8101/devops/docker-includes.git includes
-  git submodule init; git submodule update
-  ln -s includes/Makefile.dist Makefile
-  cp includes/Dockerfile.dist Dockerfile
-  cp includes/README.md.dist README.md
-  cp includes/Dockerignore .dockerignore
-}
-
-runUbuntu(){
-    if [ -f $1 ] ; then
-        case $1 in
-            p1) d-$1 run --rm -it -p 49500:80 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-registry.eccenca.com/eccenca-base /bin/bash ;;
-            p2) d-$1 run --rm -it -p 49500:80 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-registry.eccenca.com/eccenca-base /bin/bash ;;
-            idas) d-$1 run --rm -it -p 49500:80 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-registry.eccenca.com/eccenca-base /bin/bash ;;
-            kepheus) d-$1 run --rm -it -p 49500:80 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-registry.eccenca.com/eccenca-base /bin/bash ;;
-            mopsos) d-$1 run --rm -it -p 49500:80 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-registry.eccenca.com/eccenca-base /bin/bash ;;
-            esac
-    else
-         docker run --rm -it ubuntu:14.04 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker /bin/bash
-    fi
-}
-
 #TODO
 # generate server cert (with serial)
 # generate client cert (with serial)
