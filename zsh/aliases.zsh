@@ -9,6 +9,8 @@ alias cd=' cd'
 alias ..=' cd ..'
 alias ...=' cd ../..'
 
+alias mmv='noglob zmv -W'
+
 # fasd
 alias j=' z'
 alias js=' a -e subl'

@@ -11,3 +11,6 @@ setopt noclobber
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# zsh's massive move/rename module
+autoload zmv
