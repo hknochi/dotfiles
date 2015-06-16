@@ -1,8 +1,10 @@
 {
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Base16 Color Schemes/base16-eighties.dark.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"create_window_at_startup": true,
-	"dictionary": "Packages/User/German_de_DE.dic",
+	"dictionary": "Packages/Language - English/en_US.dic",
 	"draw_white_space": "all",
 	"file_exclude_patterns":
 	[
@@ -11,25 +13,29 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 12.0,
+	"font_options":
+	[
+	],
+	"font_size": 14.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"Vintage",
-		"Vintageous"
+		"Vintageous",
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active"
 	],
-	"line_padding_bottom": 1,
-	"line_padding_top": 1,
+	"line_padding_bottom": 1.2,
+	"line_padding_top": 1.2,
 	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
 	"remember_open_files": false,
 	"revert_font_size": 12.0,
 	"rulers":
@@ -42,7 +48,7 @@
 	"tab_completion": false,
 	"tab_size": 2,
 	"tabs_medium": true,
-	"theme": "Afterglow-orange.sublime-theme",
+	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
 	"word_wrap": true,
