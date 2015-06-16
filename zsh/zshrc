@@ -34,7 +34,7 @@ if ! zgen saved; then
     zgen load unixorn/autoupdate-zgen # zgen automatic updates
     zgen load Tarrasch/zsh-bd # quickly go back to a specific parent directory using 'bd'
     zgen load zsh-users/zsh-completions src
-    zgen load chriskempson/base16-shell base16-eighties.dark.sh # needed for powerline
+    #zgen load chriskempson/base16-shell base16-eighties.dark.sh # needed for powerline
     zgen load RobSis/zsh-completion-generator # completion for commands with getopts style help
     zgen load xr09/rainbow.sh rainbow.sh # simple colors for shell scripts
     #zgen load depressiveRobot/stash-aware # show message if stashes for current branch
