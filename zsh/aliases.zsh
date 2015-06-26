@@ -28,3 +28,8 @@ alias tree='tree -N' # support unicode characters
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
+
+# file suffix aliases
+alias -s pdf="o"
+alias -s md="s"
+alias -s {png,PNG,jpg,jpeg,JPG,JPEG}="o"
