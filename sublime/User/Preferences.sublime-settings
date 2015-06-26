@@ -1,4 +1,11 @@
 {
+	"added_words":
+	[
+		"Backend",
+		"Ubuntu",
+		"webapp",
+		"servlet"
+	],
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
@@ -23,9 +30,9 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
+		"Markdown",
 		"Vintage",
-		"Vintageous",
-		"Markdown"
+		"Vintageous"
 	],
 	"indent_guide_options":
 	[
@@ -34,10 +41,11 @@
 	],
 	"line_padding_bottom": 1.2,
 	"line_padding_top": 1.2,
+	"material_theme_small_tab": true,
 	"open_files_in_new_window": false,
 	"overlay_scroll_bars": "enabled",
 	"remember_open_files": false,
-	"revert_font_size": 12.0,
+	"revert_font_size": 14.0,
 	"rulers":
 	[
 		100
@@ -48,8 +56,7 @@
 	"tab_completion": false,
 	"tab_size": 2,
 	"tabs_medium": true,
-	"theme": "Material-Theme-Darker.sublime-theme",
-	"material_theme_small_tab": true,  // Set small tabs
+	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
 	"word_wrap": true,
