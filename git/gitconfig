@@ -16,7 +16,7 @@
   m = merge
   mf = merge --no-ff
   p = push
-  pl = pull
+  pl = "!f(){ git pull "$@" && git submodule update --init --recursive; }; f"
   pop = stash pop
   s = "!~/.bin/git-status"
   sf = svn fetch
