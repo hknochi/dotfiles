@@ -53,3 +53,5 @@ if [ -d $HOME/.dotfiles/zsh ]; then
     source $file
   done
 fi
+
+source /Users/Marvin/.iterm2_shell_integration.zsh
