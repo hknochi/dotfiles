@@ -30,9 +30,9 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Markdown",
+		"Vintageous",
 		"Vintage",
-		"Vintageous"
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
@@ -41,6 +41,7 @@
 	],
 	"line_padding_bottom": 1.2,
 	"line_padding_top": 1.2,
+	"material_theme_small_statusbar": true,
 	"material_theme_small_tab": true,
 	"open_files_in_new_window": false,
 	"overlay_scroll_bars": "enabled",

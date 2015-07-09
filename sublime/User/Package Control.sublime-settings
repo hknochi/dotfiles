@@ -4,6 +4,7 @@
 	],
 	"installed_packages":
 	[
+		"AlignTab",
 		"ApplySyntax",
 		"Clipboard Path",
 		"Dotfiles Syntax Highlighting",
@@ -11,7 +12,9 @@
 		"FullScreenStatus",
 		"Git Commit Message Syntax",
 		"HaoGist",
+		"LaTeX-cwl",
 		"LaTeXing",
+		"LaTeXTab",
 		"Markdown Extended",
 		"Material Theme",
 		"Monokai Extended",
