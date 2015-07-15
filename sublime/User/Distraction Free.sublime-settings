@@ -7,6 +7,5 @@
     "wrap_width": 70,
     "word_wrap": true,
     "scroll_past_end": true,
-    "rulers": [],
-    "color_scheme": "Packages/Base16 Color Schemes/base16-eighties.light.tmTheme"
+    "rulers": []
 }

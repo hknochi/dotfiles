@@ -19,9 +19,9 @@
   m = merge
   mf = merge --no-ff
   p = push
-  pl = pull
+  pl = "!f(){ git pull "$@" && git submodule update --init --recursive; }; f"
   pop = stash pop
-  s = status
+  s = "!~/.bin/git-status"
   sf = svn fetch
   l = "!git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo "
   # http://stackoverflow.com/questions/1450348/

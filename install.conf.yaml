@@ -13,7 +13,8 @@
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
-    ~/.bin/git-email-prompt: git/git-email-prompt.sh
+    ~/.bin/git-mail: git/git-mail.sh
+    ~/.bin/git-status: git/git-status.sh
     # ssh
     ~/.ssh: $HOME/.config/ssh
     # powerline shell
@@ -63,6 +64,7 @@
   # git
   - [brew install git, Installing git]
   - [brew install git-flow, Installing git-flow]
+  - [brew install git-lfs, Installing git-lfs (Large File Support)]
   - [brew install tig, Installing tig]
   - [brew install gitignore, Installing JOE (gitignore)]
   # ack
