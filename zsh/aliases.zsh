@@ -31,5 +31,5 @@ alias sudo='sudo '
 
 # file suffix aliases
 alias -s pdf="o"
-alias -s md="s"
+alias -s md="open -a /Applications/Marked\ 2.app"
 alias -s {png,PNG,jpg,jpeg,JPG,JPEG}="o"
