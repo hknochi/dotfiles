@@ -11,7 +11,7 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 15.0,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,

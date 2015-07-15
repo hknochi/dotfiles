@@ -1,6 +1,7 @@
 # Path expansion
 export PATH=$HOME/.bin:$PATH # add user binaries to path
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH=$HOME/.dotfiles/eccenca/bin:$PATH
 # Load all files from .dotfiles/zsh/ directory
 if [ -d $HOME/.dotfiles/eccenca ]; then
@@ -9,7 +10,11 @@ if [ -d $HOME/.dotfiles/eccenca ]; then
   done
 fi
 
+# nvm config
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # export docker host address
 export DOCKER_HOST=tcp://192.168.59.103:2376

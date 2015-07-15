@@ -99,6 +99,9 @@
   # change https access to ssh access for dotfile repo
   - description: "change https access to ssh access for dotfile repo"
     command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
+  - [brew install nvm, Install nvm]
+  - [mkdir ~/.nvm, Add NVM's working directory to your $HOME path]
+  - [cp $(brew --prefix nvm)/nvm-exec ~/.nvm/, Copy nvm-exec to NVM's working directory]
   #- [npm install -g ungit , Install Ungit UI]
   # use cask to install some stuff
   - [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
