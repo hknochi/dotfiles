@@ -5,6 +5,7 @@ export ZGEN_SYSTEM_UPDATE_DAYS=30
 # Path expansion
 export PATH=$HOME/.bin:$PATH # add user binaries to path
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin # fix latex for El Capitan
 
 # export docker host address
 export DOCKER_HOST=tcp://192.168.59.103:2376
