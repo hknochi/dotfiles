@@ -33,7 +33,7 @@ alias sudo='sudo '
 # zsh
 alias zshconfig="subl ~/.zshrc"
 
-# os x 
+# os x
 alias hiddenfiles="defaults write com.apple.finder AppleShowAllFiles NO"
 alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles YES"
 

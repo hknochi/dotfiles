@@ -31,10 +31,13 @@
     ~/.config/ansible_hosts: $HOME/.ansible_hosts
     # docker
     ~/.bin/docker-i: docker/docker-i
+    ~/.bin/docker-dri: docker/docker-dri
+    ~/.bin/docker-drc: docker/docker-drc
     ~/.bin/docker-loglast: docker/docker-loglast
     ~/.bin/docker-psa: docker/docker-psa
     ~/.bin/docker-rmf: docker/docker-rmf
     ~/.bin/docker-searcheccenca: docker/docker-searcheccenca
+
 
 - shell:
   # homebrew
@@ -83,6 +86,7 @@
   - [brew install raptor, Installing raptor]
   # jq
   - [brew install jq, Installing jq]
+  - [brew install pwgen, Installing pwgen]
   # keybase / gnupg
   - [brew install keybase, Installing keybase]
   - [brew install gpg-agent, Installing gpg-agent]

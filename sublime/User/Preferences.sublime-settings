@@ -1,6 +1,6 @@
 {
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Base16 Color Schemes/base16-eighties.dark.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"create_window_at_startup": true,
 	"dictionary": "Packages/User/German_de_DE.dic",
 	"draw_white_space": "all",
@@ -11,16 +11,16 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 16,
+	"font_size": 17,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Vintageous",
 		"Markdown",
-		"Vintage"
+		"Vintage",
+		"Vintageous"
 	],
 	"indent_guide_options":
 	[

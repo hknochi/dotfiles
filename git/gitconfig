@@ -5,15 +5,16 @@
   b = branch
   c = commit
   cm = commit -m
-  cms = commit -S -m 
+  cms = commit -S -m
   co = checkout
   cob = checkout -b
   ci = commit
   clean = clean -f -d
+  clone = clone --recursive
   d = diff
   dc = svn dcommit
   desc = describe
-  diff = diff HEAD 
+  diff = diff HEAD
   f = fetch --prune --all
   log = log --show-signature
   m = merge
@@ -62,7 +63,7 @@
 
 #[difftool "sourcetree"]#
 #	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-#	path = 
+#	path =
 
 #[mergetool "sourcetree"]
 #	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
