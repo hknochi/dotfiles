@@ -1,0 +1,31 @@
+# hknochi's dotfiles
+
+Personal dotfiles bootstraped using [dotbot](https://github.com/anishathalye/dotbot).
+
+Only compatible with OS X.
+
+## Prerequisites
+
+* [Sublime Text 3](http://www.sublimetext.com/3): commandline symlink creation
+* [Karabiner](https://pqrs.org/osx/karabiner/): settings restoration
+* [Seil](https://pqrs.org/osx/karabiner/seil.html.en): settings restoration
+
+## Installation
+
+<<<<<<< HEAD
+    git clone --recursive https://github.com/hknochi/dotfiles.git ~/.dotfiles
+=======
+    git clone --recursive https://github.com/depressiveRobot/dotfiles.git ~/.dotfiles
+>>>>>>> 9bff2ea152dcb95d60e598f4a39445d319e34937
+    cd ~/.dotfiles
+    sh install.sh
+
+## Settings overview
+
+*TODO*
+
+## TODOs
+
+* vim config
+* tmux config
+* support for secrets in global `gradle.properties`

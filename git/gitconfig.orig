@@ -9,6 +9,7 @@
   co = checkout
   cob = checkout -b
   ci = commit
+  cl = clone --recursive
   clean = clean -f -d
   clone = clone --recursive
   d = diff
@@ -24,7 +25,6 @@
   pop = stash pop
   s = "!~/.bin/git-status"
   sf = svn fetch
-  su = submodule update
   l = "!git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo "
   # http://stackoverflow.com/questions/1450348/
   remote-branch = "!echo $(git config branch.$(git rev-parse --abbrev-ref HEAD).remote)/$(git config branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d "/" -f 3-)"
@@ -49,6 +49,7 @@
 	name = Henri Knochenhauer
 	email = hknochi@gmail.com
 	signingkey = AB0C6D39
+	excludesfile = ~/.gitignore_global
 
 # git flow default configuration
 [gitflow "branch"]
@@ -81,6 +82,7 @@
   default = simple
 [lfs]
   url = https://artifactory.eccenca.com/api/lfs/download-eccenca-com
+
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f

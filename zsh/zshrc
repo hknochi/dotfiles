@@ -59,7 +59,9 @@ fi
 
 export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com knochenhauer@informatik.uni-leipzig.de"
 export USER="Henri Knochenhauer"
+export USER_MAIL="henri.knochenhauer@eccenca.com"
 
 # add your name to your .gitconfig
 git config --global user.name "${USER}"
 
+export PATH="/usr/local/bin:$PATH"
