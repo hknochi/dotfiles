@@ -50,6 +50,7 @@
   - [brew install curl, Installing curl]
   - [brew install python, Installing python]
   - [brew install parallel, Installing parallel]
+  - [brew install docker docker-compose docker-machine, Installing docker stuff]
   # zsh
   - [brew install zsh, Installing zsh]
   - description: "Changing default shell to zsh"
