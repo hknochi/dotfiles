@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+ECC_MAIL="henri.knochenhauer@eccenca.com"
+# Loop over all remotes registered in the repo
+for i in $(git remote -v | cut -f2 | cut -f1 -d " " | sort -u); do
+  # Check if the repo has a remote on
+  if [[ $i == *"gitlab.eccenca.com"* ]] || \
+    [[ $i == *"github.com/elds"* ]] || \
+    [[ $i == *"github.com/eccenca"* ]]
+  then
+    # Only adjust the email if necessary
+    if [[ $(git config --local user.email) != $ECC_MAIL ]]; then
+      echo ""
+      echo "This seems to be an eccenca repo"
+      echo "Setting user email to $ECC_MAIL"
+      git config --local user.email $ECC_MAIL
+    fi
+  fi
+done

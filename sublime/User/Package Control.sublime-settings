@@ -13,8 +13,13 @@
 		"FileSystem Autocompletion",
 		"FullScreenStatus",
 		"Git Commit Message Syntax",
+		"Git-StatusBar",
+		"GitGutter",
+		"GitStatus",
 		"HaoGist",
 		"HTML-CSS-JS Prettify",
+		"Indent XML",
+		"JsFormat",
 		"JSONLint",
 		"LaTeX-cwl",
 		"LaTeXing",
@@ -36,6 +41,8 @@
 		"SPARQL",
 		"SPARQL Runner",
 		"SublimeGit",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck",
 		"Table Editor",
 		"Theme - Afterglow",
 		"Theme - Soda",
@@ -44,6 +51,7 @@
 		"TrailingSpaces",
 		"Vintageous",
 		"WordCount",
-		"Wrap Plus"
+		"Wrap Plus",
+		"xml2json"
 	]
 }

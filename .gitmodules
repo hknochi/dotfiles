@@ -7,3 +7,6 @@
 [submodule "submodules/zgen"]
 	path = submodules/zgen
 	url = https://github.com/tarjoilija/zgen
+[submodule "eccenca"]
+	path = eccenca
+	url = https://gitlab.eccenca.com/devops/unix-environment.git

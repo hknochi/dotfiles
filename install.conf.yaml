@@ -112,5 +112,7 @@
   #- [npm install -g ungit , Install Ungit UI]
   # use cask to install some stuff
   - [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
+  #- [brew install youtube-dl, Install Youtube-Downloader ]
+  #- [ brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools, Install ffmpeg ]
   # install eccenca stuff
   # - [git clone --recursive https://gitlab.eccenca.com/devops/unix-environment.git ~/.dotfiles/eccenca, install eccenca stuff]

@@ -10,7 +10,6 @@ alias cd=' cd'
 alias ..=' cd ..'
 alias ...=' cd ../..'
 alias ....=' cd ../../..'
-
 alias mmv='noglob zmv -W'
 
 # http://rayninfo.co.uk/tips/zshtips.html
@@ -53,6 +52,7 @@ alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles YES"
 export PRVT_DOCKER="docker --tlsverify --tlscacert=$HOME/.config/ssl/pki-hknochi/ca/docker-ca.cer --tlscert=$HOME/.config/ssl/pki-hknochi/certs/docker/client/hknochi.crt --tlskey=$HOME/.config/ssl/pki-hknochi/certs/docker/client/hknochi-rsa.key "
 
 alias d-s1="$PRVT_DOCKER -H=docker-server1.hknochi.de:2375 "
+alias d-s="$PRVT_DOCKER -H=docker.hknochi.de:2376 "
 alias d-htwk="$PRVT_DOCKER -H=docker-htwk.hknochi.de:2375 "
 alias dm="docker-machine"
 alias private="$HOME/Documents/encfslogin.sh"
@@ -127,8 +127,6 @@ alias -s log="open"
 
 alias -s sla="open"
 
-alias -s exe="open"
-
 alias -s tjp="tj3"
 alias -s asc="gpg"
 alias -s pem="openssl x509 -noout -text -in "
@@ -140,3 +138,9 @@ alias -s tar.gz="extract $@"
 # fancy mac aliases
 alias pw="pwgen -Cs 20 1 | tr -d ' ' | tr -d '\n' | pbcopy"
 alias macfind="mdfind -name '$@'"
+
+alias yt='docker run --rm -v `pwd`:/data vimagick/youtube-dl'
+alias letsencrypt='docker run -it --rm -p 443:443 -p 80:80 --name certbot -v /Users/hknochenhauer/.config/letsencrypt:/etc/letsencrypt -v /Users/hknochenhauer/.config/letsencrypt-backups:/var/lib/letsencrypt quay.io/letsencrypt/letsencrypt:latest auth'
+
+alias intellij="open -a 'IntelliJ IDEA'"
+alias idea="intellij"

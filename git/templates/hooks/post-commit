@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#
+source ./hooks/custom_hooks/hooks-available/openproject.hook
+
+exit 0
