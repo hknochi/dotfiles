@@ -5,8 +5,6 @@
     ~/.zshrc: zsh/zshrc
     # ack
     ~/.ackrc: ack/ackrc
-    # slate
-    ~/.slate.js: slate/slate.js
     # sublime
     ~/.bin/subl: "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
     "~/Library/Application Support/Sublime Text 3/Packages/User": sublime/User
@@ -27,17 +25,15 @@
     ~/.config/ssl/docker-eccenca/cert.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.cer
     ~/.config/ssl/docker-eccenca/client-key.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.key
     ~/.config/ssl/docker-eccenca/client-cert.pem: ~/.config/ssl/docker-eccenca/client_hknochenhauer.cer
-    # ansible
-    ~/.config/ansible_hosts: $HOME/.ansible_hosts
     # docker
     ~/.bin/docker-i: docker/docker-i
     ~/.bin/docker-dri: docker/docker-dri
     ~/.bin/docker-drc: docker/docker-drc
     ~/.bin/docker-loglast: docker/docker-loglast
+    ~/.bin/docker-el: docker/docker-el
     ~/.bin/docker-psa: docker/docker-psa
     ~/.bin/docker-rmf: docker/docker-rmf
     ~/.bin/docker-vri: docker/docker-vri
-    ~/.bin/docker-searcheccenca: docker/docker-searcheccenca
 
 
 - shell:
@@ -51,7 +47,23 @@
   - [brew install curl, Installing curl]
   - [brew install python, Installing python]
   - [brew install parallel, Installing parallel]
-  - [brew install docker docker-compose docker-machine, Installing docker stuff]
+  # docker
+  - description: "Uninstalling docker"
+    command: 'brew uninstall --force --ignore-dependencies docker'
+  - description: "Installing docker"
+    command: 'brew install "https://raw.githubusercontent.com/Homebrew/homebrew-core/b2774ae078d57135526881a4baa76dfe5d45aefe/Formula/docker.rb"'
+  - description: "Uninstalling docker-machine"
+    command: 'brew uninstall --force --ignore-dependencies docker-machine'
+  - description: "Installing docker-machine"
+    command: 'brew install "https://raw.githubusercontent.com/Homebrew/homebrew-core/b2774ae078d57135526881a4baa76dfe5d45aefe/Formula/docker-machine.rb"'
+  - description: "create docker-machine"
+    command: 'docker-machine create --driver virtualbox --virtualbox-disk-size "80000" --virtualbox-memory "8192" --virtualbox-cpu-count "6" --virtualbox-boot2docker-url "https://github.com/boot2docker/boot2docker/releases/download/v17.09.0-ce/boot2docker.iso" dev'
+  - description: "Uninstalling docker-compose"
+    command: 'brew uninstall --force --ignore-dependencies docker-compose'
+  - description: "Installing docker-compose"
+    command: 'brew install --ignore-dependencies "https://raw.githubusercontent.com/Homebrew/homebrew-core/b2774ae078d57135526881a4baa76dfe5d45aefe/Formula/docker-compose.rb"'
+  - description: "pin docker docker-compose and docker-machine version"
+    command: 'brew pin docker docker-compose docker-machine'
   # zsh
   - [brew install zsh, Installing zsh]
   - description: "Changing default shell to zsh"
@@ -64,8 +76,9 @@
     stdin: true
   # terminal notifications
   - [brew install terminal-notifier, Installing terminal-notifier]
-  # fasd
+  # system-libs
   - [brew install fasd, Installing fasd]
+  - [brew install ncdu, Installing ncdu]
   # git
   - [brew install git, Installing git]
   - [brew install git-flow, Installing git-flow]
