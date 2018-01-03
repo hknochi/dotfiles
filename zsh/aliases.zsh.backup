@@ -153,6 +153,11 @@ alias hadolint='docker run --name hadolint --rm -i lukasmartinelli/hadolint '
 
 alias intellij="open -a 'IntelliJ IDEA'"
 alias idea="intellij"
+
+alias similarity="python $HOME/.dotfiles/custom_scripts/similarity.py"
+#alias npm="docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /usr/local/bin/npm  docker-registry.eccenca.com/eccenca-node:latest"
+#alias yarn="docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /usr/bin/yarn  docker-registry.eccenca.com/eccenca-node:latest"
+#alias node="docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /usr/local/bin/node  docker-registry.eccenca.com/eccenca-node:latest"
 export PATH=$PATH:/Users/hknochenhauer/bin
 
 source '/Users/hknochenhauer/lib/azure-cli/az.completion'

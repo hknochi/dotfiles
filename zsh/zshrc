@@ -42,7 +42,7 @@ if ! zgen saved; then
     zgen load t413/zsh-background-notify # background notifications for long running commands
 
     # theme
-    zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train.zsh-theme
+    zgen load bhilburn/powerlevel9k powerlevel9k
 
     # save all to init script
     zgen save
@@ -57,10 +57,9 @@ fi
 
 #customization
 
-export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com knochenhauer@informatik.uni-leipzig.de"
+export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com hknochi@gmail.com henri.knochenhauer@uni-leipzig.de knochenhauer@informatik.uni-leipzig.de"
 export USER="Henri Knochenhauer"
 export USER_MAIL="henri.knochenhauer@eccenca.com"
-
 # add your name to your .gitconfig
 git config --global user.name "${USER}"
 

@@ -18,5 +18,6 @@
     { "keys": ["shift+super+f"], "command": "reindent", "args": {"single_line": false} },
     { "keys": ["option+super+s"], "command": "toggle_side_bar" },
     { "keys": ["super+shift+space"], "command": "expand_region" },
-    { "keys": ["option+super+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} }
+    { "keys": ["option+super+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+    { "keys": ["super+alt+m"], "command": "marked" }
 ]

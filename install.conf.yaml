@@ -36,6 +36,7 @@
     ~/.bin/docker-loglast: docker/docker-loglast
     ~/.bin/docker-psa: docker/docker-psa
     ~/.bin/docker-rmf: docker/docker-rmf
+    ~/.bin/docker-vri: docker/docker-vri
     ~/.bin/docker-searcheccenca: docker/docker-searcheccenca
 
 

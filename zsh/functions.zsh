@@ -8,22 +8,22 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # credits: https://github.com/seebi/rdf.sh/blob/master/rdfw
 _checkTool() {
 
-    tool=$1
-    if [[ "$tool" == "" ]]
+  tool=$1
+  if [[ "$tool" == "" ]]
     then
-        echo "checkTool error: need an parameter"
-        exit 1
-    fi
+    echo "checkTool error: need an parameter"
+    exit 1
+  fi
 
-    for tool in $*
-    do
-        check=`which $tool 2>/dev/null >/dev/null`
-        if [[ "$?" == "1" ]]
-        then
-            echo "Error: you need '$tool' for this command."
-            exit 1
-        fi
-    done
+  for tool in $*
+  do
+    check=`which $tool 2>/dev/null >/dev/null`
+    if [[ "$?" == "1" ]]
+      then
+      echo "Error: you need '$tool' for this command."
+      exit 1
+    fi
+  done
 }
 
 # extend rdf tool
@@ -33,17 +33,17 @@ function rdf() {
   _checkTool rdf
 
   if [[ "$1" = "ns" ]] # extend ns parameter to copy namespace to clipboard too
-  then
+    then
     namespace=$(/usr/local/bin/rdf ns $2)
     echo "$namespace"
     echo "$namespace" | perl -ne 'chomp and print' | pbcopy
   elif [[ "$1" = "desc" ]]
-  then
+    then
     _checkTool pygmentize
     data=$(any23 rover -t -f turtle $2)
     echo "$data" | pygmentize -l turtle
   else
-      /usr/local/bin/rdf $@
+    /usr/local/bin/rdf $@
   fi
 }
 
@@ -59,21 +59,21 @@ function git() {
 
   for i do
         lastArgument=$i # last argument can be the directory or the repository url
-  done
+      done
 
-  /usr/local/bin/git $@
+      /usr/local/bin/git $@
 
   if [[ $? -eq 0 ]] # only show prompt if git command was successful
-  then
-    if [[ "$1" = "init" || "$1" = "clone" ]]
     then
-      if [[ -d "$lastArgument" ]]
+    if [[ "$1" = "init" || "$1" = "clone" ]]
       then
+      if [[ -d "$lastArgument" ]]
+        then
         # it was the directory argument, cd it
         cd $lastArgument
       else
         if [[ "$1" = "clone" ]]
-        then
+          then
           # no directory given, parse it from repository url
           cd $(echo $lastArgument | awk -F/ '{ print $NF }' | rev | sed 's/tig.//' | rev)
         else if [[ "$1" = "init" && "$lastArgument" = "--bare" ]]
@@ -102,24 +102,24 @@ docker() {
 }
 
 extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1     ;;
+*.tar.gz)    tar xzf $1     ;;
+*.bz2)       bunzip2 $1     ;;
+*.rar)       unrar e $1     ;;
+*.gz)        gunzip $1      ;;
+*.tar)       tar xf $1      ;;
+*.tbz2)      tar xjf $1     ;;
+*.tgz)       tar xzf $1     ;;
+*.zip)       unzip $1       ;;
+*.Z)         uncompress $1  ;;
+*.7z)        7z x $1        ;;
+*)     echo "'$1' cannot be extracted via extract()" ;;
+esac
+else
+ echo "'$1' is not a valid file"
+fi
 }
 
 # Creates an archive (*.tar.gz) from given directory.
@@ -135,26 +135,26 @@ makezip () {
 }
 
 update () {
-case "$(uname -s)" in
+  case "$(uname -s)" in
 
    Darwin)
-     echo 'Mac OS X'
-     brew update && brew upgrade
-     brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
-     ;;
+echo 'Mac OS X'
+brew update && brew upgrade
+brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
+;;
 
-   Linux)
-     echo 'Linux'
-     sudo apt-get update && sudo apt-get upgrade
-     ;;
+Linux)
+echo 'Linux'
+sudo apt-get update && sudo apt-get upgrade
+;;
 
-   CYGWIN*|MINGW32*|MSYS*)
-     echo 'MS Windows'
-     ;;
+CYGWIN*|MINGW32*|MSYS*)
+echo 'MS Windows'
+;;
 
-   *)
-     echo 'other OS (or missing cases for above OSs)' 
-     ;;
+*)
+echo 'other OS (or missing cases for above OSs)' 
+;;
 esac
 }
 
@@ -202,25 +202,25 @@ function getcertnames() {
 	echo ""; # newline
 
 	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
-		| openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
+  | openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
 
-	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText=$(echo "${tmp}" \
-			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
-			no_serial, no_sigdump, no_signame, no_validity, no_version");
-		echo "Common Name:";
+  if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+    local certText=$(echo "${tmp}" \
+    | openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
+    no_serial, no_sigdump, no_signame, no_validity, no_version");
+    echo "Common Name:";
 		echo ""; # newline
 		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
 		echo ""; # newline
 		echo "Subject Alternative Name(s):";
 		echo ""; # newline
 		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
-		return 0;
-	else
-		echo "ERROR: Certificate not found.";
-		return 1;
-	fi;
+   | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
+   return 0;
+ else
+  echo "ERROR: Certificate not found.";
+  return 1;
+fi;
 }
 
 function mkdate() {
@@ -232,21 +232,60 @@ function mkdate() {
 }
 
 function restructure(){
-  for dir in $(find . -maxdepth 1 -type d ! -iname ".*" -print | egrep -v ^./[0-9]{4}-[0-9]{2})
+  IFS=$'\n'
+  find . -maxdepth 1 -type f ! -iname ".*" | egrep -v '^./[0-9]{4}-[0-9]{2}' | while read FILE;
   do
-          echo $dir
-          date_dir=$(stat $dir | grep Modify |  awk '{ print $2}'| cut -f1,2 -d'-')
-          echo $date_dir
-          [[ -d $date_dir ]] || mkdir -p $date_dir
-          if [[ -d $date_dir ]]
-          then
-                  echo 'move '$dir' to '$date_dir
-                  mv -f $dir $date_dir
-          else
-                  echo  $date_dir 'creat failed'
-          fi
+    DIR=$(date -r "$FILE" "+%Y-%m")
+    FILE_DATE=$(date -r "$FILE" "+%Y-%m-%d")
+    [[ -d $DIR ]] || mkdir -p "${DIR}"
+    mv "$FILE" "$DIR/${FILE_DATE}-${FILE#*/}"
+  done
+  for dir in $(find . -maxdepth 1 -type d ! -iname ".*" -print | egrep -v '^./[0-9]{4}-[0-9]{2}' )
+  do
+    echo "${dir}"
+    date_dir=$(stat "${dir}" | grep Modify |  awk '{ print $2}'| cut -f1,2 -d'-')
+    echo "${date_dir}"
+    [[ -d "${date_dir}" ]] || mkdir -p "${date_dir}"
+    if [[ -d "${date_dir}" ]]
+      then
+      echo 'move '"${dir}"' to '"${date_dir}"
+      mv -f "${dir}" "${date_dir}"
+    else
+      echo "${date_dir}" 'creat failed'
+    fi
   done
 }
+
+function do_ocr(){
+  OCR_COUNT=0
+  DIR=${1}
+  find $DIR -maxdepth 1 -type f -name "*.pdf" ! -name "*.ocr.pdf" | while read FILE;
+  do
+    if [ -f "$DIR/${$(basename "$FILE")%.*}.ocr.${$(basename "$FILE")##*.}" ]; then
+      echo "skip $FILE because already ocr'ed"
+      continue
+    fi
+    if [ $OCR_COUNT -lt 16 ]; then
+      echo ocr "${FILE}" "${$(basename "$FILE")%.*}.ocr.${$(basename "$FILE")##*.}"
+      ocr "${FILE}" "${$(basename "$FILE")%.*}.ocr.${$(basename "$FILE")##*.}" &
+      let OCR_COUNT=OCR_COUNT+1
+    fi
+  done
+}
+
+docker-pull-refresh() {
+local image=$1
+local exitCode
+docker pull "$image" &
+while : ; do
+  timeout 5s docker pull "$image"  > /dev/null 2> /dev/null
+  local exitCode=$?
+  if [ ! "124" = "${exitCode}" ]; then
+    break
+  fi
+done
+}
+
 #TODO
 # generate server cert (with serial)
 # generate client cert (with serial)

@@ -1,8 +1,18 @@
 {
+	"added_words":
+	[
+		"workflows",
+		"eccenca",
+		"Artifactory",
+		"Solr",
+		"kubectl",
+		"yml",
+		"namespace"
+	],
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"create_window_at_startup": true,
-	"dictionary": "Packages/User/German_de_DE.dic",
+	"dictionary": "Packages/Language - English/en_US.dic",
 	"draw_white_space": "all",
 	"file_exclude_patterns":
 	[
@@ -12,13 +22,15 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 19,
+	"font_size": 15.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
+		"GitStatus",
+		"GitStatusBar",
 		"Markdown",
 		"Vintage",
 		"Vintageous"
@@ -32,7 +44,7 @@
 	"line_padding_top": 1,
 	"open_files_in_new_window": false,
 	"remember_open_files": false,
-	"revert_font_size": 12.0,
+	"revert_font_size": 17.0,
 	"rulers":
 	[
 		100

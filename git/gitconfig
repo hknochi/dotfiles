@@ -1,37 +1,50 @@
 [alias]
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
   a = add
   aa = add .
   ai = add -i
   b = branch
   c = commit
   cm = commit -m
+  cs = commit -S
   cms = commit -S -m
   co = checkout
   cob = checkout -b
   ci = commit
   clean = clean -f -d
-  clone = clone --recursive
+  clone = clone --recursive --recurse-submodules
 #  cu = "!f(){ if git rev-parse @{u} > /dev/null 2>&1 ; then printf \"has an upstream\"; else printf \"has no upstream\" ;fi}; f"
   d = diff
   dc = svn dcommit
   desc = describe
-  diff = diff HEAD
+  diff = diff --submodule=diff HEAD 
   f = fetch --prune --all
   hook = "!f(){ rm -rf ./.git/hooks ; ln -s ~/.git/templates/hooks ./.git/hooks; }; f"
+  h = "!f(){ git log --tags --simplify-by-decoration --pretty='format:%ci %d' | sort -r; }; f"
   log = log --show-signature
   m = merge
   mf = merge --no-ff
-  #hub = '! echo "https://github.com/"`git config remote.origin.url` | sed -E s/[a-z]+@github\.com:// | sed s/\.git$//'
-  #url =!sh -c 'HEAD=`git rev-parse HEAD` && SHA1=`[ "$0" = "sh" ] && echo $HEAD || echo $0` && echo `git hub`"/commit/"${SHA1i}'
-  o = "!f(){ git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(ssh://git@|git://)#https://#' -Ee 's#(8101)/##' -e 's@com:@com/@' | head -n1 | xargs open; }; f"
+  o = "!f(){ git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(ssh://git@|git://)#https://#' | sed -Ee 's#(8101)/##' -e 's@com:@com/@' | head -n1 | xargs open; }; f"
   p = push
-  pl = "!f(){ git pull "$@" && git submodule update --init --recursive; }; f"
+  pl = "!f(){ git up "$@" && git submodule update --init --recursive; }; f"
   pv = "!f(){ git push origin master && git push origin develop && git push origin $(git describe --abbrev=0 --tags);}; f"
-  pop = stash pop
+  pull = up
   s = "!~/.bin/git-status"
   sf = svn fetch
   su = submodule update --recursive --init
-  ss= submodule sync
+  ss = submodule sync
+  st = "!sh -c  'echo \"Stash Help:\nstl:\tgit stash list - list all stashes\
+                \nsts:\tgit stash save \
+                \nsta:\tgit stash apply stash@{0} - Specified stash or most recent (stash@{0}) \
+                \nstd:\tgit stash drop stash@{0} - drop recent stash\"'"
+  stl = stash list --pretty=format:'%Cblue%h %Cred* %C(yellow)%s'
+  sts = stash save
+  sta = stash apply # Specified stash or most recent (stash@{0})
+  std = stash drop #
+  up = "!git remote update -p; git merge --ff-only @{u}"
+
+  who = shortlog -s --
+
   lv = describe --always --dirty
   v = describe --always --dirty
   l = "!git --no-pager log -1 --format=format:\"$path: (%G?) %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo "
@@ -53,12 +66,12 @@
   pager      = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "subl -w"
-  excludesfile = ~/.gitignore_global
+	excludesfile = /Users/hknochenhauer/.gitignore_global
 
 [user]
 	name = Henri Knochenhauer
 	email = hknochi@gmail.com
-	signingkey = AB0C6D39
+	signingkey = A3FD7E8514B1C0A5
 
 # git flow default configuration
 [gitflow "branch"]
@@ -74,7 +87,7 @@
 
 [difftool "sourcetree"]#
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -92,7 +105,28 @@
   default = simple
 [lfs]
   url = https://artifactory.eccenca.com/api/lfs/download-eccenca-com
+  access = basic
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
+[lfs "https://artifactory.eccenca.com/api/lfs/download-eccenca-com"]
+	access = basic
+[submodule]
+	fetchJobs = 4
+[rebase]
+	autostash = true
+[diff]
+	indentHeuristic = true
+[fetch]
+	prune = true
+[status]
+	submoduleSummary = true
+[merge]
+	tool = sourcetree
+[commit]
+	template = /Users/hknochenhauer/.stCommitMsg
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
