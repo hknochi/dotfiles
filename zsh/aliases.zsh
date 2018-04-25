@@ -54,7 +54,7 @@ alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles YES"
 #####Privat
 # docker private
 export PRVT_DOCKER="/usr/local/Cellar/docker/1.11.1/bin/docker --tlsverify --tlscacert=$HOME/.config/ssl/pki-hknochi/ca/docker-ca.cer --tlscert=$HOME/.config/ssl/pki-hknochi/certs/docker/client/hknochi.crt --tlskey=$HOME/.config/ssl/pki-hknochi/certs/docker/client/hknochi-rsa.key "
-export DEV_DOCKER="docker --tlsverify --tlscacert=$HOME/.config/ssl/docker-hknochi/client/hknochi/2016-12-13_client-hknochi/ca.pem --tlscert=$HOME/.config/ssl/docker-hknochi/client/hknochi/2016-12-13_client-hknochi/cert.pem --tlskey=$HOME/.config/ssl/docker-hknochi/client/hknochi/2016-12-13_client-hknochi/key.pem "
+export DEV_DOCKER="docker --tlsverify --tlscacert=$HOME/.config/ssl/docker-hknochi/ca.pem --tlscert=$HOME/.config/ssl/docker-hknochi/cert.pem --tlskey=$HOME/.config/ssl/docker-hknochi/key.pem "
 
 alias d-s="$DEV_DOCKER -H=docker.hknochi.de:2376 "
 alias d-skrbnmb="$DEV_DOCKER -H=skrbnmb.hknochi.de:2376 "

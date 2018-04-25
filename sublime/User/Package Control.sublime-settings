@@ -6,7 +6,7 @@
 	"installed_packages":
 	[
 		"AlignTab",
-		"ApacheConf.tmLanguage",
+		"ApacheConf",
 		"ApplySyntax",
 		"Base16 Color Schemes",
 		"Clipboard Path",
@@ -28,6 +28,7 @@
 		"LaTeXTab",
 		"Markdown Extended",
 		"Markdown Preview",
+		"MarkdownTOC",
 		"Marked App Menu",
 		"Material Theme",
 		"Monokai Extended",
