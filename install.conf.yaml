@@ -93,9 +93,6 @@
   - description: "Login to keybase"
     command: "keybase login"
     stdin: true
-  - description: "Decrypt secrets"
-    command: "sh sfdc-cc/bin/ssh-decrypt.sh"
-    stdin: true
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
@@ -105,8 +102,6 @@
   # change https access to ssh access for dotfile repo
   - description: "change https access to ssh access for dotfile repo"
     command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
-  # use cask to install some stuff
-  - [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
   - [brew install eksctl, Installing eksctl]
   - [brew install groovy, Installing groovy]
   - [brew install helm@2, Installing helm@2]
@@ -127,3 +122,20 @@
   - [brew install terraform@0.11, Installing terraform@0.11]
   - [brew install terraform, Installing terraform]
   - [brew install terragrunt, Installing terragrunt]
+  # use cask to install some stuff
+  -  [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
+  - [brew cask install rambox, Installing rambox]
+  - [brew cask install docker, Installing docker-for-mac]
+  - [brew cask install iterm2, Installing iterm2]
+  - [brew cask install intellij-idea, Installing intellij-idea]
+  - [brew cask install sublime-text, Installing sublime-text]
+  - [brew cask install kaleidoscope, Installing kaleidoscope]
+  - [brew cask install enpass, Installing enpass]
+  - [brew cask install lastpass, Installing lastpass]
+  - [brew cask install firefox, Installing firefox]
+  - [brew cask install google-chrome, Installing google-chrome]
+  - [brew cask install marked, Installing marked]
+  - [brew cask install gitup, Installing gitup]
+  - [brew cask install zoomus, Installing zoomus]
+  - description: "Download pasteapp"
+    command: "open macappstore://apps.apple.com/us/app/paste-clipboard-history-manager/id967805235"

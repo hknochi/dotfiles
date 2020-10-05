@@ -8,4 +8,5 @@ Currently only compatible with OS X.
 
     git clone --recursive https://github.com/hknochi/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
+    #sfdc-cc/bin/ssh-decrypt.sh
     sh install.sh
