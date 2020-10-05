@@ -67,7 +67,7 @@ fi
 
 #customization
 source ${HOME}/.dotfiles/sfdc-cc/zshrc_extension
-export MAIL_ADDRESSES="${CUSTOM_MAIL_ADDRESSES} hknochi@users.noreply.github.com hknochi@gmail.com"
+export MAIL_ADDRESSES="${CUSTOM_MAIL_ADDRESS} hknochi@users.noreply.github.com hknochi@gmail.com"
 export USER="Henri Knochenhauer"
 
 # add your name to your .gitconfig

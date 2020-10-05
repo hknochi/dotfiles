@@ -47,6 +47,56 @@ function rdf() {
   fi
 }
 
+function lpass-ssh-add(){
+  KEY_NAME=$1
+
+  if ! ( which lpass > /dev/null ); then
+    echo "LastPass CLI is required."
+  fi
+
+  # Require something to be passed to this command
+  if [ -z "${KEY_NAME}" ]; then
+    echo "You need to specify a key name."
+  fi
+
+  # Try to find the passed key path / name
+  if ! [ -e "${KEY_NAME}" ]; then
+    if [ -e "${HOME}/.ssh/${KEY_NAME}" ]; then
+      KEY_NAME="${HOME}/.ssh/${KEY_NAME}"
+    else
+      echo "Could not find key file."
+    fi
+  fi
+
+  local username="${CUSTOM_MAIL_ADDRESS}"
+  echo "debug ..."
+  local lp_status=$(lpass status)
+
+  if [ $? -ne 0 ]
+  then
+      if [ "${lp_status}" = 'Not logged in.' ]
+      then
+        # Make sure DISPLAY is set
+        DISPLAY=${DISPLAY:-:0} lpass login "${username}" 1>&2
+          else
+        echo "Lastpass error: ${lp_status}" 1>&2
+        exit 1
+      fi
+  fi
+
+  echo "SSH passhprase? "; read passhprase; \
+  lpass add --non-interactive \
+  --note-type=ssh-key \
+  --sync=now \
+  "SSH: $(basename ${KEY_NAME})"  <<EOF
+Passphrase: $(echo "${passhprase}")
+NoteType: SSH Key
+Private Key: $(awk -v ORS='\\n' '1' ${KEY_NAME})
+Public Key:  $(cat ${KEY_NAME}.pub)
+Date: $(date "+%d.%m.%Y")
+EOF
+}
+
 # edit markdown files with Sublime Text and view them with Marked 2
 function markdown() {
 

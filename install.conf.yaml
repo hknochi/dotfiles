@@ -13,6 +13,7 @@
     ~/.gitignore_global: git/gitignore_global
     ~/.bin/git-mail: git/git-mail.sh
     ~/.bin/git-status: git/git-status.sh
+    ~/.bin/lpass-ssh: custom-cmd/lpass-ssh.sh
     # ssh
     ~/.ssh: $HOME/.config/ssh
     # powerline shell
@@ -26,6 +27,8 @@
 #    command: 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 #    stdin: true
   # some dependencies
+  - [brew install lastpass-cli, Installing lastpass client]
+  - [brew install expect, Installing lastpass client]
   - [brew install coreutils, Installing coreutils]
   - [brew install wget, Installing wget]
   - [brew install curl, Installing curl]
@@ -55,7 +58,6 @@
   - description: "Installing powerlevel9k"
     command: "git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k"
     stdin: true
-    
 
   # terminal notifications
   - [brew install terminal-notifier, Installing terminal-notifier]
@@ -91,9 +93,9 @@
   - description: "Login to keybase"
     command: "keybase login"
     stdin: true
-  #- description: "Decrypt secrets"
-  #  command: "sh ssh/decrypt_secrets.sh"
-  #  stdin: true
+  - description: "Decrypt secrets"
+    command: "sh sfdc-cc/bin/ssh-decrypt.sh"
+    stdin: true
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
@@ -105,6 +107,23 @@
     command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
   # use cask to install some stuff
   - [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
-  #- [brew install youtube-dl, Install Youtube-Downloader ]
-  #- [ brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools, Install ffmpeg ]
-  
+  - [brew install eksctl, Installing eksctl]
+  - [brew install groovy, Installing groovy]
+  - [brew install helm@2, Installing helm@2]
+  - [brew install helm , Installing helm]
+  - [brew install heroku, Installing heroku]
+  - [brew install ipcalc, Installing ipcalc]
+  - [brew install joe, Installing joe]
+  - [brew install kube-aws, Installing kube-awss]
+  - [brew install kubernetes-cli, Installing kubernetes-cli]
+  - [brew install kubernetes-helm, Installing kubernetes-helm]
+  - [brew install maven, Installing maven]
+  - [brew install packer, Installing packer]
+  - [brew install parallel, Installing parallel]
+  - [brew install pinentry, Installing pinentry]
+  - [brew install stern, Installing stern]
+  - [brew install telnet, Installing telnet]
+  - [brew install tcptraceroute, Installing tcptraceroute]
+  - [brew install terraform@0.11, Installing terraform@0.11]
+  - [brew install terraform, Installing terraform]
+  - [brew install terragrunt, Installing terragrunt]
