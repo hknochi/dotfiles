@@ -116,4 +116,8 @@
   rebase = false
 
 [include]
-  path = /.dotfiles/sfdc-cc/.gitconfig_extension
+  path = ~/.dotfiles/sfdc-cc/.gitconfig_extension
+
+
+[user]
+	name = Henri Knochenhauer
