@@ -9,4 +9,4 @@
 	url = https://github.com/tarjoilija/zgen
 [submodule "sfdc-cc"]
 	path = sfdc-cc
-	url = git@git.soma.salesforce.com:hknochenhauer/dotfiles.git
+	url = https://git.soma.salesforce.com/hknochenhauer/dotfiles.git
