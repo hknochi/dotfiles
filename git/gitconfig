@@ -107,7 +107,7 @@
   tool = Kaleidoscope
 [commit]
   template = /Users/hknochenhauer/.stCommitMsg
-  gpgsign = true
+	gpgsign = true
 [gpg]
   program = gpg
 [init]
