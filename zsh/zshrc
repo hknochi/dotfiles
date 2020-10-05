@@ -1,4 +1,12 @@
 # load zgen
+export LANG="en-US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
 source "${HOME}/.dotfiles/submodules/zgen/zgen.zsh"
 
 # check if there's no init script
@@ -26,6 +34,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/sublime
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/web-search
+    zgen oh-my-zsh plugins/golang
 
     # bundles from other repos
     # If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
@@ -40,6 +49,7 @@ if ! zgen saved; then
     zgen load xr09/rainbow.sh rainbow.sh # simple colors for shell scripts
     #zgen load depressiveRobot/stash-aware # show message if stashes for current branch
     zgen load t413/zsh-background-notify # background notifications for long running commands
+    zgen load paulirish/git-open
 
     # theme
     zgen load bhilburn/powerlevel9k powerlevel9k
@@ -56,11 +66,15 @@ if [ -d $HOME/.dotfiles/zsh ]; then
 fi
 
 #customization
-
-export MAIL_ADDRESSES="hknochi@users.noreply.github.com hknochenhauer@brox.de henri.knochenhauer@eccenca.com hknochi@gmail.com henri.knochenhauer@uni-leipzig.de knochenhauer@informatik.uni-leipzig.de"
+source ${HOME}/.dotfiles/sfdc-cc/zshrc_extension
+export MAIL_ADDRESSES="${CUSTOM_MAIL_ADDRESSES} hknochi@users.noreply.github.com hknochi@gmail.com"
 export USER="Henri Knochenhauer"
-export USER_MAIL="henri.knochenhauer@eccenca.com"
+
 # add your name to your .gitconfig
 git config --global user.name "${USER}"
 
 export PATH="/usr/local/bin:$PATH"
+
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

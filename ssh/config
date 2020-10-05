@@ -1,8 +1,0 @@
-Host echion
-    HostName echion.brox.de
-    User systemuser
-    IdentityFile ~/.ssh/mfrommhold_id_rsa
-
-Host git.eccenca.com
-    HostName git.eccenca.com
-    IdentityFile ~/.ssh/mfrommhold_id_rsa

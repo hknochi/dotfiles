@@ -1,5 +1,5 @@
 {
-    "cmd": ["docker", "run", "-i", "--rm", "-w", "/data", "-v", "$folder:/data", "docker-registry.eccenca.com/eccenca-latex:latest", "pdflatex", "$file_name"],
+    "cmd": ["docker", "run", "-i", "--rm", "-w", "/data", "-v", "$folder:/data", "blang/latex", "pdflatex", "$file_name"],
     //"selector": "source.tex",
     "working_dir": "${project_path:${folder}}"
 }

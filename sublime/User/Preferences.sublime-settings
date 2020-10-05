@@ -22,7 +22,7 @@
 	],
 	"findreplace_small": true,
 	"font_face": "Source Code Pro ExtraLight",
-	"font_size": 18.0,
+	"font_size": 16.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
@@ -34,7 +34,8 @@
 		"GitStatusBar",
 		"Markdown",
 		"Vintage",
-		"Vintageous"
+		"Vintageous",
+		"zzz A File Icon zzz"
 	],
 	"indent_guide_options":
 	[
@@ -45,7 +46,7 @@
 	"line_padding_top": 1,
 	"open_files_in_new_window": false,
 	"remember_open_files": false,
-	"revert_font_size": 15.0,
+	"revert_font_size": 16.0,
 	"rulers":
 	[
 		100

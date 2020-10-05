@@ -1,10 +1,16 @@
 {
+	"auto_indent": true,
+	"detect_indentation": true,
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"expand_tabs_on_save": true,
 	"extensions":
 	[
 		"xsd",
 		"xslt",
-		"svg",
+		"xml.dist",
 		"xml",
-		"xml.dist"
-	]
+		"svg"
+	],
+	"trim_trailing_white_space_on_save": true
 }

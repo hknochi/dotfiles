@@ -1,0 +1,27 @@
+#!/bin/bash
+
+date=$(date +%Y%m%d_%H%M%S)
+error_file="$date-errors.tf-batch"
+
+touch "${PWD}/${error_file}"
+while IFS= read -r line
+do
+  echo "execute $line"
+  result=$(sh -c "$line")
+  if [ $? -eq 0 ]; then
+    echo "okay"
+  else
+    echo "$line" >> "${PWD}/${error_file}"
+    echo "${result}" >> "${PWD}/${error_file}"
+    echo "
+
+
+    " >> "${PWD}/${error_file}"
+  fi
+done < "$1"
+
+if [ -s "${PWD}/${error_file}" ];then
+  echo "${PWD}/${error_file} has some data."
+else
+  echo "${PWD}/${error_file} is empty."
+fi

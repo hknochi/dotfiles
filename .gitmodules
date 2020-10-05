@@ -7,6 +7,6 @@
 [submodule "submodules/zgen"]
 	path = submodules/zgen
 	url = https://github.com/tarjoilija/zgen
-[submodule "eccenca"]
-	path = eccenca
-	url = https://gitlab.eccenca.com/devops/unix-environment.git
+[submodule "sfdc-cc"]
+	path = sfdc-cc
+	url = git@git.soma.salesforce.com:hknochenhauer/dotfiles.git

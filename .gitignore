@@ -3,13 +3,6 @@ sublime/User/Package Control.last-run
 sublime/User/SPARQLRunner.sublime-settings
 sublime/User/HaoGist.sublime-settings
 
-ssh/known_hosts
-ssh/environment-MacGyver
-ssh/id_boot2docker
-ssh/id_boot2docker.pub
-ssh/mfrommhold_id_rsa
-ssh/mfrommhold_id_rsa.pub
-
 # Created by https://www.gitignore.io
 
 ### OSX ###

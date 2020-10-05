@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker logs -f $(docker ps -qa|head -n1)

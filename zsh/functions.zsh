@@ -93,11 +93,34 @@ function git() {
 # example: add docker-psa to your path to have the command "docker psa"
 docker() {
   if command -v "docker-$1" > /dev/null 2>&1; then
+    echo "\033[31mrunning custom command\033[0m"
     subcommand=$1
     shift
     docker-$subcommand $@
   else
     /usr/local/bin/docker $@
+  fi
+}
+
+kubectl() {
+  if command -v "kubectl-$1" > /dev/null 2>&1; then
+    echo "\033[31mrunning custom command\033[0m"
+    subcommand=$1
+    shift
+    kubectl-$subcommand $@
+  else
+    /usr/local/bin/kubectl $@
+  fi
+}
+
+terraform() {
+  if command -v "terraform-$1" > /dev/null 2>&1; then
+    echo "\033[31mrunning custom command\033[0m"
+    subcommand=$1
+    shift
+    terraform-$subcommand $@
+  else
+    /usr/local/bin/terraform $@
   fi
 }
 
@@ -121,6 +144,54 @@ else
  echo "'$1' is not a valid file"
 fi
 }
+
+#convert skeletton
+convert(){
+  if [ -f $1 ] ; then
+    filename="${1##*/}"              # Strip longest match of */ from start
+    base="${filename%.[^.]*}"               # Strip shortest match of . plus at least one non-dot char from end
+    ext="${filename:${#base} + 1}"          # Substring from len of base thru end
+    if [[ -z "$base" && -n "$ext" ]]; then  # If we have an extension and no base, it's really the base
+        base=".$ext"
+        ext=""
+    fi
+
+    //check the file extension
+    case $1 in
+      *.heic) docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /tifig/build/tifig monostream/tifig -v -i "$1" -o "$base.jpg" ;;
+      *.mov) docker run --rm -v  ${PWD}:/data -w /data --entrypoint ffmpeg vimagick/youtube-dl -i "$1" -vcodec h264 -acodec copy "$base.mp4" ;;
+      *) echo "'$1' cannot be converted via convert()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+#adjust creation dsate of pictures
+pictureCreationDate(){
+  timestamp=$(mdls -name kMDItemContentCreationDate "$1" | awk '{print $3 $4}')
+  timestamp="${timestamp//-}"
+  timestamp="${timestamp//:}"
+  timestamp="${timestamp:0:-2}"
+  touch -t "$timestamp" "$1"
+}
+adjustCreationDate (){
+  if [ -f $1 ] ; then
+    //check the file extension
+    case $1 in
+      *.jpeg) pictureCreationDate "$1" ;;
+      *.png) pictureCreationDate "$1" ;;
+      *.gif) pictureCreationDate "$1" ;;
+      *.jpg) pictureCreationDate "$1" ;;
+      *.mov) pictureCreationDate "$1" ;;
+      *) echo "'$1' cannot adjust creationDate via adjustCreationDate()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+
 
 # Creates an archive (*.tar.gz) from given directory.
 maketar () {

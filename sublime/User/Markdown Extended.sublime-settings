@@ -1,3 +1,4 @@
 {
-  "color_scheme": "Packages/Theme - Solarized Space/Solarized V Markdown (Light).tmTheme"
+  "color_scheme": "Packages/Theme - Solarized Space/Solarized V Markdown (Light).tmTheme",
+  "trim_trailing_white_space_on_save": true
 }

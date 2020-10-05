@@ -1,0 +1,7 @@
+[
+    {
+        "id": "sublimelinter_panel",
+        "caption": "Show All Errors",
+        "command": "sublime_linter_panel_toggle"
+    }
+]

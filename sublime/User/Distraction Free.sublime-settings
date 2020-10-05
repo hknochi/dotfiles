@@ -1,7 +1,7 @@
 {
     "font_face": "Source Code Pro",
     "font_size": 16,
-    "line_numbers": false,
+    "line_numbers": true,
     "gutter": true,
     "draw_centered": true,
     "wrap_width": 70,

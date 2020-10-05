@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z ${AWS_SESSION_TOKEN+x} ]; then
+  echo "AWS_SESSION_TOKEN not set"
+  exit 1
+fi
+
+kubectl config current-context
+
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard | awk '{print $1}') | awk '$1=="token:"{print $2}' | pbcopy

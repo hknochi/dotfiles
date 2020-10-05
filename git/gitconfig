@@ -4,6 +4,7 @@
   aa = add .
   ai = add -i
   b = branch
+  branchauthors = "! for branch in `git branch -r | grep -v /HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
   c = commit
   cm = commit -m
   cs = commit -S
@@ -17,36 +18,36 @@
   d = diff
   dc = svn dcommit
   desc = describe
-  diff = diff --submodule=diff HEAD 
+  diff = diff --submodule=diff HEAD
   f = fetch --prune --all
   hook = "!f(){ rm -rf ./.git/hooks ; ln -s ~/.git/templates/hooks ./.git/hooks; }; f"
   h = "!f(){ git log --tags --simplify-by-decoration --pretty='format:%ci %d' | sort -r; }; f"
+  i = "!f(){ curl -L -s https://www.gitignore.io/api/$@ ;}; f"
+  ksdiff = difftool
   log = log --show-signature
+  language = "!f(){ docker run -it --rm -v ${PWD}:/workdir -w /workdir crazymax/linguist; }; f"
   m = merge
   mf = merge --no-ff
-  o = "!f(){ git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(ssh://git@|git://)#https://#' | sed -Ee 's#(8101)/##' -e 's@com:@com/@' | head -n1 | xargs open; }; f"
+  o = open
   p = push
   pl = "!f(){ git up "$@" && git submodule update --init --recursive; }; f"
-  pv = "!f(){ git push origin master && git push origin develop && git push origin $(git describe --abbrev=0 --tags);}; f"
+  pv = "!f(){ git push origin $(git describe --abbrev=0 --tags) && git push origin develop && git push origin master;}; f"
   pull = up
   s = "!~/.bin/git-status"
   sf = svn fetch
   su = submodule update --recursive --init
   ss = submodule sync
-  st = "!sh -c  'echo \"Stash Help:\nstl:\tgit stash list - list all stashes\
-                \nsts:\tgit stash save \
-                \nsta:\tgit stash apply stash@{0} - Specified stash or most recent (stash@{0}) \
-                \nstd:\tgit stash drop stash@{0} - drop recent stash\"'"
-  stl = stash list --pretty=format:'%Cblue%h %Cred* %C(yellow)%s'
+#  st = "!sh -c  'echo \"Stash Help:\nstl:\tgit stash list - list all stashes\"\'"
   sts = stash save
   sta = stash apply # Specified stash or most recent (stash@{0})
   std = stash drop #
+  squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
   up = "!git remote update -p; git merge --ff-only @{u}"
 
   who = shortlog -s --
 
   lv = describe --always --dirty
-  v = describe --always --dirty
+  v = describe --always --dirty --tags
   l = "!git --no-pager log -1 --format=format:\"$path: (%G?) %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo "
   # http://stackoverflow.com/questions/1450348/
   remote-branch = "!echo $(git config branch.$(git rev-parse --abbrev-ref HEAD).remote)/$(git config branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d "/" -f 3-)"
@@ -54,7 +55,7 @@
   in = "!git --no-pager log HEAD..$(git remote-branch) --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'"
   lg = "log --color --graph --pretty=format:'%Cred%h%Creset (%G?) - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
   ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-  ui = !gitui
+  ui = !gitup
 
 [credential]
   helper = osxkeychain
@@ -66,12 +67,8 @@
   pager      = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "subl -w"
-	excludesfile = /Users/hknochenhauer/.gitignore_global
-
-[user]
-	name = Henri Knochenhauer
-	email = hknochi@gmail.com
-	signingkey = A3FD7E8514B1C0A5
+  excludesfile = /Users/hknochenhauer/.gitignore_global
+  autocrlf = input
 
 # git flow default configuration
 [gitflow "branch"]
@@ -85,48 +82,38 @@
   support    = support/
   versiontag = v
 
-[difftool "sourcetree"]#
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[mergetool]
-  keepBackup = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
   prompt = false
-
-#[difftool "Kaleidoscope"]
-#  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-#[mergetool "Kaleidoscope"]
-#  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-#  trustExitCode = true
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[difftool]
+  prompt = false
 [push]
   default = simple
-[lfs]
-  url = https://artifactory.eccenca.com/api/lfs/download-eccenca-com
-  access = basic
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
-[lfs "https://artifactory.eccenca.com/api/lfs/download-eccenca-com"]
-	access = basic
 [submodule]
-	fetchJobs = 4
+  fetchJobs = 4
 [rebase]
-	autostash = true
+  autostash = true
 [diff]
-	indentHeuristic = true
+  tool = Kaleidoscope
+  indentHeuristic = true
 [fetch]
-	prune = true
+  prune = true
 [status]
-	submoduleSummary = true
+  submoduleSummary = true
 [merge]
-	tool = sourcetree
+  tool = Kaleidoscope
 [commit]
-	template = /Users/hknochenhauer/.stCommitMsg
-	gpgsign = true
+  template = /Users/hknochenhauer/.stCommitMsg
+  gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+  program = gpg
+[init]
+  templatedir = ~/.dotfiles/git/custom_hooks
+[pull]
+  rebase = false
+
+[include]
+  path = /.dotfiles/sfdc-cc/.gitconfig_extension

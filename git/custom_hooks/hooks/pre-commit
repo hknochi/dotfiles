@@ -1,0 +1,24 @@
+#!/bin/sh
+echo "run pre-commit hook"
+protected_branch='master'
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+# check if current repository contains terraform files
+# Formats any *.tf files according to the hashicorp convention
+files=$(git diff --diff-filter=d --cached --name-only)
+tf_cmd=$(which terraform)
+for f in $files
+do
+  if [ -e "$f" ] && [[ $f == *.tf ]]; then
+    echo "found terraform files, going to check the format..."
+    if [ $(${tf_cmd} fmt -check=true "${f}") ];then
+      echo "\033[31m cancelled commit - found violation for ${f}, going to reformat it... \033[0m"
+      ${tf_cmd} fmt "${f}"
+      exit 1
+    fi
+  # check if current repository contains packer image
+  elif [ -e "$f" ] && [[ $f == image.json ]]; then
+    echo "found packer image, going to check the syntax"
+    packer validate  --var "environment=exp" --var "key_name=tmp" --var "key_file=~/.ssh/jenkins_ssh" image.json
+  fi
+done

@@ -24,13 +24,17 @@ alias -g CP=' | pbcopy'
 
 # fasd
 alias j=' z'
-alias js=' a -e subl'
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
 
 alias g='git'
 alias o='open'
 alias s='subl && subl' # fix empty window if sublime was not running before opening file
 alias v='vim'
 alias d='docker'
+alias k='kubectl'
+alias tf='terraform'
+alias tg='terragrunt'
 alias rdf='rdf'
 alias grep='grep --color=auto'
 alias sign='function _blah(){ gpg --clearsign --output=${$(basename "$1")%.*}.signed.${$(basename "$1")##*.} ${1};  };_blah'
@@ -38,6 +42,9 @@ alias verify='gpg --verify'
 alias signd='gpg --detach-sign --armor'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diskusage='ncdu'
+alias rm="rmtrash"
+alias del="rmtrash"
+alias trash="rmtrash"
 alias rf='rm -rf'
 alias tree='tree -N --dirsfirst' # support unicode characters
 
@@ -139,6 +146,7 @@ alias -s pem="openssl x509 -noout -text -in "
 alias -s zip="extract $@"
 alias -s rar="extract $@"
 alias -s tar.gz="extract $@"
+alias -s 7z="extract $@"
 
 # fancy mac aliases
 alias pw="pwgen -Cs 20 1 | tr -d ' ' | tr -d '\n' | pbcopy"
@@ -150,9 +158,10 @@ alias letsencrypt='docker run -it --rm -p 443:443 -p 80:80 --name certbot -v /Us
 
 alias ocr='docker run --rm -v "`pwd`:/home/docker" jbarlow83/ocrmypdf --skip-text'
 alias hadolint='docker run --name hadolint --rm -i lukasmartinelli/hadolint '
-
+alias groovy='docker run --rm -it -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts -v grapes-cache:/home/groovy/.groovy/grapes groovy groovy'
 alias intellij="open -a 'IntelliJ IDEA'"
 alias idea="intellij"
+
 export PATH=$PATH:/Users/hknochenhauer/bin
 
-source '/Users/hknochenhauer/lib/azure-cli/az.completion'
+
