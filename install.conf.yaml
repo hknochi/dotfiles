@@ -137,4 +137,5 @@
   - [brew cask install marked, Installing marked]
   - [brew cask install gitup, Installing gitup]
   - [brew cask install zoomus, Installing zoomus]
-  - [open macappstore://apps.apple.com/us/app/paste-clipboard-history-manager/id967805235, Installing pasteapp]
+  - description: "Download pasteapp"
+    command: "open macappstore://apps.apple.com/us/app/paste-clipboard-history-manager/id967805235"
