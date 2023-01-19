@@ -9,8 +9,8 @@ setopt noclobber
 
 # Set keystrokes for zsh-users/zsh-history-substring-search plugin
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[B' history-substring-search-down
+bindkey '^[[A' history-substring-search-up
 
 # zsh's massive move/rename module
 autoload zmv

@@ -156,7 +156,7 @@ alias yt='docker run --rm -v `pwd`:/data vimagick/youtube-dl'
 alias ytmp3="yt '$@' --extract-audio --audio-format mp3 --audio-quality 0  -v"
 alias letsencrypt='docker run -it --rm -p 443:443 -p 80:80 --name certbot -v /Users/hknochenhauer/.config/letsencrypt:/etc/letsencrypt -v /Users/hknochenhauer/.config/letsencrypt-backups:/var/lib/letsencrypt quay.io/letsencrypt/letsencrypt:latest auth'
 
-alias ocr='docker run --rm -v "`pwd`:/home/docker" jbarlow83/ocrmypdf --skip-text'
+alias ocr=' docker run --rm -w /work -v "`pwd`:/work" jbarlow83/ocrmypdf --skip-text'
 alias hadolint='docker run --name hadolint --rm -i lukasmartinelli/hadolint '
 alias groovy='docker run --rm -it -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts -v grapes-cache:/home/groovy/.groovy/grapes groovy groovy'
 alias intellij="open -a 'IntelliJ IDEA'"

@@ -58,7 +58,7 @@
   ui = !gitup
 
 [credential]
-  helper = osxkeychain
+	helper = cache
 
 [color]
   ui = true
@@ -66,7 +66,7 @@
 [core]
   pager      = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = "subl -w"
+  #editor = "subl -w"
   excludesfile = /Users/hknochenhauer/.gitignore_global
   autocrlf = input
 
@@ -121,3 +121,9 @@
 
 [user]
 	name = Henri Knochenhauer
+[trace2]
+	normaltarget = /Users/hknochenhauer/.gimlet-home/trace2
+	configParams = remote.*.url
+	normalBrief = true
+[gimlet]
+	telemetry-host-id = 8129E0B6-F842-42E3-A32C-2B0B6A231AEA
