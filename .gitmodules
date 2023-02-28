@@ -10,3 +10,6 @@
 [submodule "sfdc-cc"]
 	path = sfdc-cc
 	url = https://git.soma.salesforce.com/hknochenhauer/dotfiles.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
