@@ -12,81 +12,185 @@
     ~/.bin/git-status: git/git-status.sh
     # rdf.sh
     ~/.config/rdf.sh: rdf.sh
+    # iterm2 — load prefs from dotfiles
+    ~/Library/Preferences/com.googlecode.iterm2.plist:
+      path: iterm2/com.googlecode.iterm2.plist
+      force: true
 
 - shell:
-  # homebrew
-#  - description: "Installing Homebrew"
-#    command: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-#    stdin: true
-  # core dependencies
+  # ── Homebrew ──────────────────────────────────────────────────────────────
+  - description: "Installing Homebrew"
+    command: 'command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+    stdin: true
+  - description: "Activating Homebrew environment"
+    command: 'eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv 2>/dev/null)" || true'
+
+  # ── Taps ──────────────────────────────────────────────────────────────────
+  - [brew tap heroku/brew, Tap heroku]
+  - [brew tap cue-lang/tap, Tap cue-lang]
+  - [brew tap minio/stable, Tap minio]
+  - [brew tap moul/moul, Tap moul (docker-diff)]
+  - [brew tap sourcegraph/src-cli, Tap Sourcegraph]
+  - [brew tap suin/suin, Tap suin (iterm2-cli)]
+  - [brew tap kreuzwerker/taps, Tap kreuzwerker (m1-terraform-provider-helper)]
+
+  # ── Core shell & Unix tools ───────────────────────────────────────────────
   - [brew install coreutils, Installing coreutils]
+  - [brew install findutils, Installing findutils (GNU find/xargs)]
+  - [brew install gawk, Installing gawk]
+  - [brew install gnu-sed, Installing gnu-sed]
+  - [brew install gnu-tar, Installing gnu-tar]
+  - [brew install gnu-getopt, Installing gnu-getopt]
+  - [brew install grep, Installing grep]
   - [brew install wget, Installing wget]
   - [brew install curl, Installing curl]
-  - [brew install python, Installing python]
   - [brew install parallel, Installing parallel]
-  # zsh
+  - [brew install bash-completion, Installing bash-completion]
+  - [brew install tree, Installing tree]
+  - [brew install ncdu, Installing ncdu]
+  - [brew install jq, Installing jq]
+  - [brew install yq, Installing yq (YAML)]
+  - [brew install xq, Installing xq (XML/JSON)]
+  - [brew install ripgrep, Installing ripgrep (rg)]
+  - [brew install graphviz, Installing graphviz (dot)]
+  - [brew install nmap, Installing nmap]
+  - [brew install trash, Installing trash (safe rm)]
+  - [brew install pwgen, Installing pwgen]
+  - [brew install terminal-notifier, Installing terminal-notifier]
+  - [brew install telnet, Installing telnet]
+  - [brew install tcptraceroute, Installing tcptraceroute]
+  - [brew install expect, Installing expect]
+  - [brew install ipcalc, Installing ipcalc]
+  - [brew install joe, Installing joe]
+  - [brew install s3cmd, Installing s3cmd]
+  - [brew install yamllint, Installing yamllint]
+
+  # ── zsh ───────────────────────────────────────────────────────────────────
   - [brew install zsh, Installing zsh]
   - description: "Changing default shell to zsh"
     command: "chsh -s /bin/zsh"
     stdin: true
-  # powerline shell
+  - [brew install antigen, Installing antigen (zsh plugin manager)]
+  - [brew install powerlevel10k, Installing powerlevel10k (zsh theme)]
+  - [brew install fasd, Installing fasd (directory jumping)]
+  - [brew install autojump, Installing autojump]
+
+  # ── Python ────────────────────────────────────────────────────────────────
+  - [brew install python@3.13, Installing Python 3.13]
+  - [brew install pyenv, Installing pyenv]
+  - [brew install pipx, Installing pipx]
   - [pip3 install powerline-status, Installing powerline shell]
   - description: "Installing powerline fonts"
     command: "curl -sSL https://raw.githubusercontent.com/powerline/fonts/master/install.sh | sh"
     stdin: true
-  # terminal notifications
-  - [brew install terminal-notifier, Installing terminal-notifier]
-  # system-libs
-  - [brew install ncdu, Installing ncdu]
-  # git
-  - [brew install git, Installing git]
-  - [brew install git-flow, Installing git-flow]
-  - [brew install git-lfs, Installing git-lfs (Large File Support)]
-  - [brew install tig, Installing tig]
-  # ack
-  - [brew install ack, Installing ack]
-  # tree
-  - [brew install tree, Installing tree]
-  # rdf.sh
   - [pip3 install Pygments, Installing Pygments]
   - description: "Installing n3pygments"
     command: "sh rdf.sh/install_n3pygments.sh"
     stdin: true
-  # raptor
-  - [brew install raptor, Installing raptor]
-  # jq
-  - [brew install jq, Installing jq]
-  - [brew install pwgen, Installing pwgen]
-  # gnupg
-  - [brew install gnupg, Installing gnupg]
-  - [brew install pinentry-mac, Installing pinentry-mac]
-  # creating directories
-  - [mkdir -p ~/.config, Creating .config directory]
-  - [mkdir -p ~/.bin, Creating .bin directory]
-  # iterm2 preferences
-  - [defaults write com.googlecode.iterm2 PrefsCustomFolder -string $HOME/.dotfiles/iterm2]
-  # change https access to ssh access for dotfile repo
-  - description: "change https access to ssh access for dotfile repo"
-    command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
-  # k8s / infra
-  - [brew install eksctl, Installing eksctl]
-  - [brew install helm, Installing helm]
-  - [brew install kubernetes-cli, Installing kubernetes-cli]
-  - [brew install stern, Installing stern]
-  - [brew install terraform, Installing terraform]
-  - [brew install terragrunt, Installing terragrunt]
-  - [brew install packer, Installing packer]
+
+  # ── Ruby ──────────────────────────────────────────────────────────────────
+  - [brew install ruby-install, Installing ruby-install]
+  - [brew install chruby, Installing chruby]
+
+  # ── Node ──────────────────────────────────────────────────────────────────
+  - [brew install nvm, Installing nvm (Node version manager)]
+
+  # ── Java ──────────────────────────────────────────────────────────────────
+  - [brew install jenv, Installing jenv (Java version manager)]
+  - [brew install openjdk, Installing OpenJDK]
   - [brew install maven, Installing maven]
   - [brew install groovy, Installing groovy]
-  - [brew install ipcalc, Installing ipcalc]
-  - [brew install joe, Installing joe]
-  - [brew install telnet, Installing telnet]
-  # cask apps
+  - [brew install ant, Installing ant]
+
+  # ── Go ────────────────────────────────────────────────────────────────────
+  - [brew install go, Installing Go]
+  - [brew install gemini-cli, Installing Gemini CLI]
+
+  # ── Git ───────────────────────────────────────────────────────────────────
+  - [brew install git, Installing git]
+  - [brew install git-flow, Installing git-flow]
+  - [brew install git-lfs, Installing git-lfs]
+  - [brew install tig, Installing tig]
+  - [brew install gh, Installing GitHub CLI]
+  - [brew install ack, Installing ack]
+
+  # ── Terraform / infra ─────────────────────────────────────────────────────
+  - [brew install tfenv, Installing tfenv (manages terraform versions)]
+  - [brew install terragrunt, Installing terragrunt]
+  - [brew install packer, Installing packer]
+  - [brew install vault, Installing HashiCorp Vault]
+  - [brew install kreuzwerker/taps/m1-terraform-provider-helper, Installing m1-terraform-provider-helper]
+
+  # ── Kubernetes ────────────────────────────────────────────────────────────
+  - [brew install kubernetes-cli, Installing kubectl]
+  - [brew install eksctl, Installing eksctl]
+  - [brew install helm, Installing helm]
+  - [brew install stern, Installing stern]
+  - [brew install kind, Installing kind (k8s in Docker)]
+
+  # ── AWS ───────────────────────────────────────────────────────────────────
+  - [brew install awscli, Installing AWS CLI]
+  - [brew install awscli-local, Installing awscli-local (LocalStack)]
+  - [brew install localstack, Installing LocalStack]
+
+  # ── MinIO ─────────────────────────────────────────────────────────────────
+  - [brew install minio, Installing MinIO server]
+  - [brew install minio/stable/mc, Installing MinIO client (mc)]
+
+  # ── Docker extras ─────────────────────────────────────────────────────────
+  - [brew install docker-compose, Installing docker-compose]
+  - [brew install moul/moul/docker-diff, Installing docker-diff]
+
+  # ── Security / GPG ────────────────────────────────────────────────────────
+  - [brew install gnupg, Installing gnupg]
+  - [brew install pinentry-mac, Installing pinentry-mac]
+  - [brew install hopenpgp-tools, Installing hopenpgp-tools]
+  - [brew install ykman, Installing YubiKey manager]
+  - [brew install ykpers, Installing ykpers]
+
+  # ── PDF / doc tools ───────────────────────────────────────────────────────
+  - [brew install pdftk-java, Installing pdftk-java]
+  - [brew install raptor, Installing raptor]
+
+  # ── Sourcegraph ───────────────────────────────────────────────────────────
+  - [brew install sourcegraph/src-cli/src-cli, Installing Sourcegraph CLI]
+
+  # ── Heroku ────────────────────────────────────────────────────────────────
+  - [brew install heroku/brew/heroku, Installing Heroku CLI]
+
+  # ── CUE ───────────────────────────────────────────────────────────────────
+  - [brew install cue-lang/tap/cue, Installing CUE]
+
+  # ── iTerm2 CLI ────────────────────────────────────────────────────────────
+  - [brew install suin/suin/iterm2-cli, Installing iterm2-cli]
+
+  # ── Directories ───────────────────────────────────────────────────────────
+  - [mkdir -p ~/.config, Creating .config directory]
+  - [mkdir -p ~/.bin, Creating .bin directory]
+
+  # ── Repo remote ───────────────────────────────────────────────────────────
+  - description: "Switching dotfiles remote to SSH"
+    command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
+
+  # ── iTerm2 preferences ────────────────────────────────────────────────────
+  - description: "Configuring iTerm2 to load prefs from dotfiles"
+    command: "defaults write com.googlecode.iterm2 PrefsCustomFolder -string $HOME/.dotfiles/iterm2 && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true"
+
+  # ── Cask apps ─────────────────────────────────────────────────────────────
   - [brew install --cask iterm2, Installing iterm2]
-  - [brew install --cask docker, Installing docker-for-mac]
-  - [brew install --cask intellij-idea, Installing intellij-idea]
-  - [brew install --cask sublime-text, Installing sublime-text]
-  - [brew install --cask firefox, Installing firefox]
-  - [brew install --cask google-chrome, Installing google-chrome]
-  - description: "Download pasteapp"
+  - [brew install --cask docker, Installing Docker Desktop]
+  - [brew install --cask claude, Installing Claude desktop + Claude Code]
+  - [brew install --cask 1password, Installing 1Password]
+  - [brew install --cask 1password-cli, Installing 1Password CLI]
+  - [brew install --cask bettertouchtool, Installing BetterTouchTool]
+  - [brew install --cask intellij-idea, Installing IntelliJ IDEA]
+  - [brew install --cask sublime-text, Installing Sublime Text]
+  - [brew install --cask firefox, Installing Firefox]
+  - [brew install --cask google-chrome, Installing Google Chrome]
+  - [brew install --cask inkscape, Installing Inkscape]
+  - [brew install --cask keystore-explorer, Installing Keystore Explorer]
+  - [brew install --cask sfdx, Installing Salesforce DX]
+  - [brew install --cask font-awesome-terminal-fonts, Installing Font Awesome terminal fonts]
+  - [brew install --cask font-powerline-symbols, Installing Powerline symbols font]
+  - description: "Download Paste app"
     command: "open macappstore://apps.apple.com/us/app/paste-clipboard-history-manager/id967805235"
