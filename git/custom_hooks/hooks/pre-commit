@@ -20,5 +20,14 @@ do
   elif [ -e "$f" ] && [[ $f == image.json ]]; then
     echo "found packer image, going to check the syntax"
     packer validate  --var "environment=exp" --var "key_name=tmp" --var "key_file=~/.ssh/jenkins_ssh" image.json
+  elif [ -e "$f" ] && [[ $f == *.yaml ]]; then
+    echo "found yaml files, going to check the format for syntax errors ..."
+    yq "${f}" >> /dev/null
+  elif [ -e "$f" ] && [[ $f == *.json ]]; then
+    echo "found json files, going to check the format for syntax errors ..."
+    jq "${f}" >> /dev/null
+  elif [ -e "$f" ] && [[ $f == *.xml ]]; then
+    echo "found xml files, going to check the format for syntax errors ..."
+    xq "${f}" >> /dev/null
   fi
 done

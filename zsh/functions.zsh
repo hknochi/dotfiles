@@ -47,56 +47,6 @@ function rdf() {
   fi
 }
 
-function lpass-ssh-add(){
-  KEY_NAME=$1
-
-  if ! ( which lpass > /dev/null ); then
-    echo "LastPass CLI is required."
-  fi
-
-  # Require something to be passed to this command
-  if [ -z "${KEY_NAME}" ]; then
-    echo "You need to specify a key name."
-  fi
-
-  # Try to find the passed key path / name
-  if ! [ -e "${KEY_NAME}" ]; then
-    if [ -e "${HOME}/.ssh/${KEY_NAME}" ]; then
-      KEY_NAME="${HOME}/.ssh/${KEY_NAME}"
-    else
-      echo "Could not find key file."
-    fi
-  fi
-
-  local username="${CUSTOM_MAIL_ADDRESS}"
-  echo "debug ..."
-  local lp_status=$(lpass status)
-
-  if [ $? -ne 0 ]
-  then
-      if [ "${lp_status}" = 'Not logged in.' ]
-      then
-        # Make sure DISPLAY is set
-        DISPLAY=${DISPLAY:-:0} lpass login "${username}" 1>&2
-          else
-        echo "Lastpass error: ${lp_status}" 1>&2
-        exit 1
-      fi
-  fi
-
-  echo "SSH passhprase? "; read passhprase; \
-  lpass add --non-interactive \
-  --note-type=ssh-key \
-  --sync=now \
-  "SSH: $(basename ${KEY_NAME})"  <<EOF
-Passphrase: $(echo "${passhprase}")
-NoteType: SSH Key
-Private Key: $(awk -v ORS='\\n' '1' ${KEY_NAME})
-Public Key:  $(cat ${KEY_NAME}.pub)
-Date: $(date "+%d.%m.%Y")
-EOF
-}
-
 # edit markdown files with Sublime Text and view them with Marked 2
 function markdown() {
 
@@ -111,7 +61,7 @@ function git() {
         lastArgument=$i # last argument can be the directory or the repository url
       done
 
-      /usr/local/bin/git $@
+      /opt/homebrew/bin/git $@
 
   if [[ $? -eq 0 ]] # only show prompt if git command was successful
     then
@@ -152,27 +102,27 @@ docker() {
   fi
 }
 
-kubectl() {
-  if command -v "kubectl-$1" > /dev/null 2>&1; then
-    echo "\033[31mrunning custom command\033[0m"
-    subcommand=$1
-    shift
-    kubectl-$subcommand $@
-  else
-    /usr/local/bin/kubectl $@
-  fi
-}
+# kubectl() {
+#   if command -v "kubectl-$1" > /dev/null 2>&1; then
+#     echo "\033[31mrunning custom command\033[0m"
+#     subcommand=$1
+#     shift
+#     kubectl-$subcommand $@
+#   else
+#     /usr/local/bin/kubectl $@
+#   fi
+# }
 
-terraform() {
-  if command -v "terraform-$1" > /dev/null 2>&1; then
-    echo "\033[31mrunning custom command\033[0m"
-    subcommand=$1
-    shift
-    terraform-$subcommand $@
-  else
-    /usr/local/bin/terraform $@
-  fi
-}
+# terraform() {
+#   if command -v "terraform-$1" > /dev/null 2>&1; then
+#     echo "\033[31mrunning custom command\033[0m"
+#     subcommand=$1
+#     shift
+#     terraform-$subcommand $@
+#   else
+#     /usr/local/bin/terraform $@
+#   fi
+# }
 
 extract () {
   if [ -f $1 ] ; then
@@ -208,8 +158,11 @@ convert(){
 
     //check the file extension
     case $1 in
-      *.heic) docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /tifig/build/tifig monostream/tifig -v -i "$1" -o "$base.jpg" ;;
+#docker run -it --rm -v ${PWD}:/data -w /data --entrypoint /tifig/build/tifig monostream/tifig -v -i "$1" -o "$base.jpg" ;;
+      *.heic) sips -s format jpeg "$1" --out "$base.jpg";;
+      *.HEIC) sips -s format jpeg "$1" --out "$base.jpg";;
       *.mov) docker run --rm -v  ${PWD}:/data -w /data --entrypoint ffmpeg vimagick/youtube-dl -i "$1" -vcodec h264 -acodec copy "$base.mp4" ;;
+      *.webm) docker run --rm -v  ${PWD}:/data -w /data --entrypoint ffmpeg vimagick/youtube-dl -i "$1" -vcodec libx264 -qscale 0 "$base.mp4" ;;
       *) echo "'$1' cannot be converted via convert()" ;;
     esac
   else
@@ -345,7 +298,7 @@ fi;
 }
 
 function mkdate() {
-  name=$(date --iso)
+  name=$(gdate --iso)
   if [ ! -z "${1}" ]; then
     name="${name}-${1}"
   fi;

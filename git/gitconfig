@@ -29,6 +29,7 @@
   m = merge
   mf = merge --no-ff
   o = open
+  open = "!~/.bin/git-open"
   p = push
   pl = "!f(){ git up "$@" && git submodule update --init --recursive; }; f"
   pv = "!f(){ git push origin $(git describe --abbrev=0 --tags) && git push origin develop && git push origin master;}; f"
@@ -55,10 +56,10 @@
   in = "!git --no-pager log HEAD..$(git remote-branch) --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'"
   lg = "log --color --graph --pretty=format:'%Cred%h%Creset (%G?) - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
   ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-  ui = !gitup
+  ui = !/usr/local/bin/gitup
 
 [credential]
-	helper = cache
+	helper = "!f() { sleep 1; echo \"username=${GIT_USERNAME}\"; echo \"password=${GIT_PASSWORD}\"; }; f"
 
 [color]
   ui = true
@@ -112,6 +113,7 @@
   program = gpg
 [init]
   templatedir = ~/.dotfiles/git/custom_hooks
+	defaultBranch = main
 [pull]
   rebase = false
 
@@ -125,5 +127,12 @@
 	normaltarget = /Users/hknochenhauer/.gimlet-home/trace2
 	configParams = remote.*.url
 	normalBrief = true
+	maxFiles = 800
 [gimlet]
 	telemetry-host-id = 8129E0B6-F842-42E3-A32C-2B0B6A231AEA
+	auto-enable-trace2 = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

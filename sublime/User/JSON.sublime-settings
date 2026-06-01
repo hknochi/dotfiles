@@ -1,14 +1,16 @@
 {
 	"extensions":
 	[
-		".tf",
-		".bowerrc",
 		"geojson",
-		".jscsrc",
 		".tfvalues",
+		".babelrc",
 		".csslintrc",
+		".tf",
+		".stylelintrc",
+		".bowerrc",
+		".eslintrc",
+		".jscsrc",
 		".jshintrc",
-		".eslintrc"
 	],
-	"tab_size": 2
+	"tab_size": 2,
 }

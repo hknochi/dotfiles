@@ -6,11 +6,11 @@
 	"expand_tabs_on_save": true,
 	"extensions":
 	[
-		"xsd",
-		"xslt",
-		"xml.dist",
 		"xml",
-		"svg"
+		"svg",
+		"xsd",
+		"xml.dist",
+		"xslt",
 	],
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
 }

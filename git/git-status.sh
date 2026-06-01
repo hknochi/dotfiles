@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-/usr/local/bin/git status $*
+git status $*
 
 branchName=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 if [[ "$branchName" != "" ]]

@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "jenkins-cc1"
+  ],
+  "enableAllProjectMcpServers": true
+}

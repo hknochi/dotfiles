@@ -5,11 +5,11 @@
 	],
 	"installed_packages":
 	[
+		"0x0",
 		"A File Icon",
 		"AlignTab",
 		"ApacheConf",
 		"ApplySyntax",
-		"Base16 Color Schemes",
 		"Clipboard Path",
 		"CodeFormatter",
 		"DocBlockr",
@@ -24,6 +24,7 @@
 		"Groovy Snippets",
 		"HaoGist",
 		"HTML-CSS-JS Prettify",
+		"HTMLBeautify",
 		"Indent XML",
 		"JsFormat",
 		"JSONLint",
@@ -44,7 +45,6 @@
 		"Predawn",
 		"Pretty JSON",
 		"Pretty YAML",
-		"Python PEP8 Autoformat",
 		"PyYapf Python Formatter",
 		"RAML Syntax Highlighter",
 		"RevertFontSize",
@@ -55,6 +55,7 @@
 		"Solarized Toggle",
 		"SPARQL",
 		"SPARQL Runner",
+		"Strapdown Markdown Preview",
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
@@ -71,8 +72,8 @@
 		"Theme - Spacegray",
 		"TrailingSpaces",
 		"Vintageous",
-		"WordCount",
+		"WordingStatus",
 		"Wrap Plus",
-		"xml2json"
-	]
+		"xml2json",
+	],
 }

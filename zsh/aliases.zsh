@@ -42,9 +42,9 @@ alias verify='gpg --verify'
 alias signd='gpg --detach-sign --armor'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diskusage='ncdu'
-alias rm="rmtrash"
-alias del="rmtrash"
-alias trash="rmtrash"
+#alias rm="rmtrash"
+#alias del="rmtrash"
+#alias trash="rmtrash"
 alias rf='rm -rf'
 alias tree='tree -N --dirsfirst' # support unicode characters
 
@@ -162,6 +162,4 @@ alias groovy='docker run --rm -it -v "$PWD":/home/groovy/scripts -w /home/groovy
 alias intellij="open -a 'IntelliJ IDEA'"
 alias idea="intellij"
 
-export PATH=$PATH:/Users/hknochenhauer/bin
-
-
+alias python=/usr/bin/python3

@@ -1,5 +1,13 @@
 source /Users/hknochenhauer/.bootstrap_rc
-# load zgen
+
+##### ~/.zprofile #####
+eval "$(pyenv init --path)"
+
+##### ~/.zshrc #####
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
 export LANG="en-US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_NUMERIC=en_US.UTF-8
@@ -8,56 +16,8 @@ export LC_COLLATE=en_US.UTF-8
 export LC_MONETARY=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
-source "${HOME}/.dotfiles/submodules/zgen/zgen.zsh"
-
-# check if there's no init script
-# zgen configuration
-if ! zgen saved; then
-    echo "Creating a zgen save"
-
-    zgen oh-my-zsh
-
-    # plugins
-    zgen oh-my-zsh plugins/apache2-macports
-    zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/colored-man
-    zgen oh-my-zsh plugins/command-not-found
-    zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/fasd
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/git-extras
-    zgen oh-my-zsh plugins/gpg-agent
-    zgen oh-my-zsh plugins/gradle
-    zgen oh-my-zsh plugins/mvn
-    zgen oh-my-zsh plugins/osx
-    zgen oh-my-zsh plugins/pip
-    zgen oh-my-zsh plugins/ssh-agent
-    zgen oh-my-zsh plugins/sublime
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/web-search
-    zgen oh-my-zsh plugins/golang
-
-    # bundles from other repos
-    # If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
-    # they break, so get the order right.
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-history-substring-search
-    zgen load unixorn/autoupdate-zgen # zgen automatic updates
-    zgen load Tarrasch/zsh-bd # quickly go back to a specific parent directory using 'bd'
-    zgen load zsh-users/zsh-completions src
-    #zgen load chriskempson/base16-shell base16-eighties.dark.sh # needed for powerline
-    zgen load RobSis/zsh-completion-generator # completion for commands with getopts style help
-    zgen load xr09/rainbow.sh rainbow.sh # simple colors for shell scripts
-    #zgen load depressiveRobot/stash-aware # show message if stashes for current branch
-    zgen load t413/zsh-background-notify # background notifications for long running commands
-    zgen load paulirish/git-open
-
-    # theme
-    zgen load bhilburn/powerlevel9k powerlevel9k
-
-    # save all to init script
-    zgen save
-fi
+##### ~/.zprofile #####
+eval "$(pyenv init --path)"
 
 #load fasd
 eval "$(fasd --init auto)"
@@ -79,47 +39,10 @@ git config --global user.name "${USER}"
 
 export PATH="/usr/local/bin:$PATH"
 
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-1-8-242.jdk"
-#export PATH="/Library/Java/JavaVirtualMachines/openjdk-1-8-242.jdk/bin:$PATH"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 __git_files () { 
     _wanted files expl 'local files' _files 
 }
 
-
-export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
-
-# jenv
-eval export PATH="/Users/<username>/.jenv/shims:${PATH}"
-export JENV_SHELL=zsh
-export JENV_LOADED=1
-unset JAVA_HOME
-source '/usr/local/Cellar/jenv/0.5.5_2/libexec/libexec/../completions/jenv.zsh'
-jenv rehash 2>/dev/null
-jenv refresh-plugins
-jenv() {
-  typeset command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  enable-plugin|rehash|shell|shell-options)
-    eval `jenv "sh-$command" "$@"`;;
-  *)
-    command jenv "$command" "$@";;
-  esac
-}
-export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
-
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/mc mc
-export NODE_EXTRA_CA_CERTS="$HOME/npm-sfdc-certs.pem"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
