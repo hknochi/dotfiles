@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 cd ~/.dotfiles/submodules/n3pygments
-sudo python setup.py install
+sudo python3 setup.py install
 
 # eof

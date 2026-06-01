@@ -5,80 +5,50 @@
     ~/.zshrc: zsh/zshrc
     # ack
     ~/.ackrc: ack/ackrc
-    # sublime
-    ~/.bin/subl: "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
-    "~/Library/Application Support/Sublime Text 3/Packages/User": sublime/User
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.bin/git-mail: git/git-mail.sh
     ~/.bin/git-status: git/git-status.sh
-    ~/.bin/lpass-ssh: custom-cmd/lpass-ssh.sh
-    # ssh
-    ~/.ssh: $HOME/.config/ssh
-    # powerline shell
-    ~/.config/powerline: powerline/config_files
     # rdf.sh
     ~/.config/rdf.sh: rdf.sh
 
 - shell:
   # homebrew
 #  - description: "Installing Homebrew"
-#    command: 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+#    command: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 #    stdin: true
-  # some dependencies
-  - [brew install lastpass-cli, Installing lastpass client]
-  - [brew install expect, Installing lastpass client]
+  # core dependencies
   - [brew install coreutils, Installing coreutils]
   - [brew install wget, Installing wget]
   - [brew install curl, Installing curl]
   - [brew install python, Installing python]
   - [brew install parallel, Installing parallel]
-  # docker
-  - description: "Uninstalling docker"
-    command: 'brew uninstall --force --ignore-dependencies docker'
-  - description: "Installing docker"
-    command: 'brew install "https://raw.githubusercontent.com/Homebrew/homebrew-core/b2774ae078d57135526881a4baa76dfe5d45aefe/Formula/docker.rb"'
-  - description: "Uninstalling docker-compose"
-    command: 'brew uninstall --force --ignore-dependencies docker-compose'
-  - description: "Installing docker-compose"
-    command: 'brew install --ignore-dependencies "https://raw.githubusercontent.com/Homebrew/homebrew-core/b2774ae078d57135526881a4baa76dfe5d45aefe/Formula/docker-compose.rb"'
-  - description: "pin docker docker-compose and docker-machine version"
-    command: 'brew pin docker docker-compose'
   # zsh
   - [brew install zsh, Installing zsh]
   - description: "Changing default shell to zsh"
-    command: "chsh -s /usr/local/bin/zsh"
+    command: "chsh -s /bin/zsh"
     stdin: true
   # powerline shell
-  - [pip install powerline-status, Installing powerline shell]
+  - [pip3 install powerline-status, Installing powerline shell]
   - description: "Installing powerline fonts"
     command: "curl -sSL https://raw.githubusercontent.com/powerline/fonts/master/install.sh | sh"
     stdin: true
-  - description: "Installing powerlevel9k"
-    command: "git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k"
-    stdin: true
-
   # terminal notifications
   - [brew install terminal-notifier, Installing terminal-notifier]
   # system-libs
-  - [brew install fasd, Installing fasd]
   - [brew install ncdu, Installing ncdu]
   # git
   - [brew install git, Installing git]
   - [brew install git-flow, Installing git-flow]
   - [brew install git-lfs, Installing git-lfs (Large File Support)]
   - [brew install tig, Installing tig]
-  - [brew install gitignore, Installing JOE (gitignore)]
   # ack
   - [brew install ack, Installing ack]
-  # ncdu
-  - [brew install ncdu, Installing ncdu]
   # tree
   - [brew install tree, Installing tree]
   # rdf.sh
-  - ["brew install https://raw.githubusercontent.com/seebi/rdf.sh/master/brew/rdf.sh.rb", Installing rdf.sh]
-  - [pip install Pygments, Installing Pygments]
+  - [pip3 install Pygments, Installing Pygments]
   - description: "Installing n3pygments"
     command: "sh rdf.sh/install_n3pygments.sh"
     stdin: true
@@ -87,55 +57,36 @@
   # jq
   - [brew install jq, Installing jq]
   - [brew install pwgen, Installing pwgen]
-  # keybase / gnupg
-  - [brew install keybase, Installing keybase]
-  - [brew install gpg-agent, Installing gpg-agent]
-  - description: "Login to keybase"
-    command: "keybase login"
-    stdin: true
+  # gnupg
+  - [brew install gnupg, Installing gnupg]
+  - [brew install pinentry-mac, Installing pinentry-mac]
   # creating directories
   - [mkdir -p ~/.config, Creating .config directory]
   - [mkdir -p ~/.bin, Creating .bin directory]
-  # set home to iterm2
-  - [defaults write com.googlecode.iterm2 Working\ Directory -string $HOME]
+  # iterm2 preferences
   - [defaults write com.googlecode.iterm2 PrefsCustomFolder -string $HOME/.dotfiles/iterm2]
   # change https access to ssh access for dotfile repo
   - description: "change https access to ssh access for dotfile repo"
     command: "cd ~/.dotfiles && git config remote.origin.url git@github.com:hknochi/dotfiles.git"
+  # k8s / infra
   - [brew install eksctl, Installing eksctl]
-  - [brew install groovy, Installing groovy]
-  - [brew install helm@2, Installing helm@2]
-  - [brew install helm , Installing helm]
-  - [brew install heroku, Installing heroku]
-  - [brew install ipcalc, Installing ipcalc]
-  - [brew install joe, Installing joe]
-  - [brew install kube-aws, Installing kube-awss]
+  - [brew install helm, Installing helm]
   - [brew install kubernetes-cli, Installing kubernetes-cli]
-  - [brew install kubernetes-helm, Installing kubernetes-helm]
-  - [brew install maven, Installing maven]
-  - [brew install packer, Installing packer]
-  - [brew install parallel, Installing parallel]
-  - [brew install pinentry, Installing pinentry]
   - [brew install stern, Installing stern]
-  - [brew install telnet, Installing telnet]
-  - [brew install tcptraceroute, Installing tcptraceroute]
-  - [brew install terraform@0.11, Installing terraform@0.11]
   - [brew install terraform, Installing terraform]
   - [brew install terragrunt, Installing terragrunt]
-  # use cask to install some stuff
-  -  [brew install caskroom/cask/brew-cask, Install Homebrew-Cask ]
-  - [brew cask install rambox, Installing rambox]
-  - [brew cask install docker, Installing docker-for-mac]
-  - [brew cask install iterm2, Installing iterm2]
-  - [brew cask install intellij-idea, Installing intellij-idea]
-  - [brew cask install sublime-text, Installing sublime-text]
-  - [brew cask install kaleidoscope, Installing kaleidoscope]
-  - [brew cask install enpass, Installing enpass]
-  - [brew cask install lastpass, Installing lastpass]
-  - [brew cask install firefox, Installing firefox]
-  - [brew cask install google-chrome, Installing google-chrome]
-  - [brew cask install marked, Installing marked]
-  - [brew cask install gitup, Installing gitup]
-  - [brew cask install zoomus, Installing zoomus]
+  - [brew install packer, Installing packer]
+  - [brew install maven, Installing maven]
+  - [brew install groovy, Installing groovy]
+  - [brew install ipcalc, Installing ipcalc]
+  - [brew install joe, Installing joe]
+  - [brew install telnet, Installing telnet]
+  # cask apps
+  - [brew install --cask iterm2, Installing iterm2]
+  - [brew install --cask docker, Installing docker-for-mac]
+  - [brew install --cask intellij-idea, Installing intellij-idea]
+  - [brew install --cask sublime-text, Installing sublime-text]
+  - [brew install --cask firefox, Installing firefox]
+  - [brew install --cask google-chrome, Installing google-chrome]
   - description: "Download pasteapp"
     command: "open macappstore://apps.apple.com/us/app/paste-clipboard-history-manager/id967805235"
