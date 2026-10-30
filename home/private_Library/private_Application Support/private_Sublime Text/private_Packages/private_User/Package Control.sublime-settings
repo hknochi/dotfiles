@@ -1,0 +1,23 @@
+{
+  "bootstrapped": true,
+  "in_process_packages": [],
+  "installed_packages": [
+    "AlignTab",
+    "ApplySyntax",
+    "Dockerfile Syntax Highlighting",
+    "Dotfiles Syntax Highlighting",
+    "GitGutter",
+    "LSP",
+    "LSP-json",
+    "LSP-yaml",
+    "MarkdownEditing",
+    "MarkdownPreview",
+    "Package Control",
+    "Pretty JSON",
+    "SideBarEnhancements",
+    "SublimeLinter",
+    "SublimeLinter-shellcheck",
+    "Terminus",
+    "Terraform"
+  ]
+}

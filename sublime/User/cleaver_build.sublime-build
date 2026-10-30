@@ -1,6 +1,0 @@
-{
-    "cmd": ["cleaver", "$file"],
-    "selector": "source.cleaver.md",
-    "working_dir": "${project_path:${folder}}"
-
-}

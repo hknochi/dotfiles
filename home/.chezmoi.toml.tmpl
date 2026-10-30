@@ -1,0 +1,11 @@
+{{- $name := promptStringOnce . "name" "Full Name for Git" "Henri Knochenhauer" -}}
+{{- $email := promptStringOnce . "email" "Primary Email for Git" "hknochi@gmail.com" -}}
+{{- $signingkey := promptStringOnce . "signingkey" "Git Signing Key (GPG Key ID or SSH Public Key)" "232FBEFEBFB53A400BECBCAE868B8D2FAB0C6D39" -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+    signingkey = {{ $signingkey | quote }}
+
+[diff]
+    pager = "delta"

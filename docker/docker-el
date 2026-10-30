@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker exec -it $(docker ps -l | awk '/^[0-9a-f]/{print $1}') bash

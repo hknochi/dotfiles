@@ -1,0 +1,44 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# =============================================================================
+# macOS System Defaults for Developers (M4 Pro / Apple Silicon)
+# =============================================================================
+
+set -euo pipefail
+
+echo "⚙️  Applying sensible macOS system defaults..."
+
+# Close any open System Settings panes to prevent overriding
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null || true
+
+# -----------------------------------------------------------------------------
+# Finder & Filesystem
+# -----------------------------------------------------------------------------
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# Show status bar and path bar in Finder
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# Search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# -----------------------------------------------------------------------------
+# Keyboard & Input (Fast developer navigation)
+# -----------------------------------------------------------------------------
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# Disable smart quotes and smart dashes (annoying when typing code)
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Restart Finder to apply changes
+killall Finder 2>/dev/null || true
+{{- end -}}

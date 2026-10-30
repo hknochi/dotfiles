@@ -1,6 +1,0 @@
-# Always color, even if piping to a another program
---color
-
-# custom filetypes
---type-set=rdf:ext:rdf,ttl,n3,nt,owl,trig,trix,graph
---type-set=sparql:ext:rq,ru,srj,srx

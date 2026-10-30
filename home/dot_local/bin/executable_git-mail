@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# =============================================================================
+# Interactive prompt to select repository email address after git init/clone
+# =============================================================================
+
+read -r -a MAILS <<< "${MAIL_ADDRESSES:-hknochi@gmail.com hknochi@users.noreply.github.com}"
+
+echo
+echo "Which email address should be configured for this repository?"
+echo "Press [Enter] to keep default ($(git config user.email))..."
+echo
+for ((i = 0; i < ${#MAILS[@]}; i++)); do
+  echo "  $(tput bold)$(($i + 1))$(tput sgr0): ${MAILS[$i]}"
+done
+echo
+read -r -n 1 -p "Select email [1-${#MAILS[@]}]: " choice
+echo
+echo
+
+if [[ -z "${choice}" ]]; then
+  echo "$(tput setaf 3)info$(tput sgr0): Keeping default email ($(git config user.email))."
+  exit 0
+fi
+
+if ! [[ "${choice}" =~ ^[0-9]+$ ]] || (( choice < 1 || choice > ${#MAILS[@]} )); then
+  echo "$(tput setaf 1)error$(tput sgr0): Invalid selection '${choice}'"
+  exit 1
+fi
+
+selected="${MAILS[$((choice - 1))]}"
+git config user.email "${selected}"
+echo "✅ Configured '${selected}' for this repository."

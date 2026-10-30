@@ -1,0 +1,50 @@
+{
+  "added_words": [
+    "workflows",
+    "Artifactory",
+    "Solr",
+    "kubectl",
+    "yml",
+    "namespace"
+  ],
+  "close_windows_when_empty": false,
+  "color_scheme": "Monokai.sublime-color-scheme",
+  "create_window_at_startup": true,
+  "draw_white_space": ["selection", "trailing"],
+  "Ensure_newline_at_eof_on_save": true,
+  "file_exclude_patterns": [
+    "*.pdf",
+    "*synctex.gz",
+    ".DS_Store"
+  ],
+  "findreplace_small": true,
+  "font_face": "JetBrainsMono Nerd Font",
+  "font_size": 14,
+  "hardware_acceleration": "opengl",
+  "highlight_line": true,
+  "highlight_modified_tabs": true,
+  "hot_exit": false,
+  "ignored_packages": [
+    "Vintage"
+  ],
+  "indent_guide_options": [
+    "draw_normal",
+    "draw_active"
+  ],
+  "index_files": true,
+  "line_padding_bottom": 2,
+  "line_padding_top": 2,
+  "open_files_in_new_window": false,
+  "remember_open_files": false,
+  "rulers": [
+    100
+  ],
+  "scroll_past_end": true,
+  "tab_completion": false,
+  "tab_size": 2,
+  "theme": "Default Dark.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "word_wrap": true,
+  "wrap_width": 100
+}

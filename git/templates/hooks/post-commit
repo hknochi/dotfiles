@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#
-source ./.git/hooks/custom_hooks/hooks-available/openproject.hook
-
-exit 0

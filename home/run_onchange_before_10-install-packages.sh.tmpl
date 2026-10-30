@@ -1,0 +1,47 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# =============================================================================
+# Chezmoi Setup: Homebrew Bundle & Oh-My-Zsh Installation
+# Runs automatically when Brewfile changes:
+# Brewfile hash: {{ include "../Brewfile" | sha256sum }}
+# =============================================================================
+
+set -euo pipefail
+
+# Ensure Homebrew is in PATH (Apple Silicon /opt/homebrew or Intel /usr/local)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# 1. Install Homebrew packages from Brewfile
+REPO_ROOT="$(cd "{{ .chezmoi.sourceDir }}/.." && pwd)"
+if [[ -f "${REPO_ROOT}/Brewfile" ]]; then
+  echo "🍺 Installing packages from Brewfile..."
+  brew bundle --file="${REPO_ROOT}/Brewfile"
+fi
+
+# 2. Install Oh-My-Zsh (unattended, without overwriting .zshrc)
+if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
+  echo "🐚 Installing Oh-My-Zsh..."
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# 3. Configure GnuPG pinentry-mac on Apple Silicon
+mkdir -p "${HOME}/.gnupg"
+chmod 700 "${HOME}/.gnupg"
+PINENTRY_BIN="$(brew --prefix)/bin/pinentry-mac"
+if [[ -x "${PINENTRY_BIN}" ]]; then
+  if ! grep -q "pinentry-program" "${HOME}/.gnupg/gpg-agent.conf" 2>/dev/null; then
+    echo "pinentry-program ${PINENTRY_BIN}" >> "${HOME}/.gnupg/gpg-agent.conf"
+    killall gpg-agent 2>/dev/null || true
+  fi
+fi
+
+# 4. Configure iTerm2 custom preferences folder
+if [[ -d "${REPO_ROOT}/iterm2" ]]; then
+  defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${REPO_ROOT}/iterm2"
+  defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+fi
+{{- end -}}

@@ -1,5 +1,0 @@
-{
-    "cmd": ["raml2html", "-i", "$file_name", "-o", "$file_base_name.html"],
-    "selector": "source.raml",
-    "working_dir": "${project_path:${folder}}"
-}

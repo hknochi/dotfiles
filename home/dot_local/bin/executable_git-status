@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+# =============================================================================
+# Enhanced git status showing stashes for the current branch
+# =============================================================================
+
+command git status "$@"
+
+branchName=$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [[ -n "$branchName" ]]; then
+  output=$(command git stash list 2>/dev/null | grep -i --color=never "On $branchName")
+  if [[ -n "$output" ]]; then
+    echo
+    echo "📦 Stashed changes on '$branchName':"
+    while IFS= read -r line; do
+      echo -e "  \033[0;33m${line}\033[0m"
+    done <<< "$output"
+    echo
+  fi
+fi
